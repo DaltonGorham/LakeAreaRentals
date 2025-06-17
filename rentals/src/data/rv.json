@@ -1,0 +1,16 @@
+[
+    
+        {
+        "id": 20,
+        "name": "2023 Thor Miramar",
+        "description": "With sleeping accommodations for up to 10 people, this luxurious RV offers comfort and convenience at every turn. Equipped with a powerful Triton 7.3L V8 engine and a Ford F-53 chassis, it delivers 350 horsepower for smooth and reliable performance. Enjoy modern amenities, including a 35,000 BTU furnace to keep you warm, ample storage, and an 80-gallon fuel capacity for extended journeys. Whether you're exploring the countryside or heading to your favorite campsite, the Thor Miramar ensures a first-class travel experience.",
+        "fuel_type": "Gas",
+        "mpg_city": 6,
+        "mpg_highway": 8,
+        "sleeps": 10,
+        "image": "/images/rv/thor_rv.jpeg",
+        "price_per_day": "400",
+        "category": "Motor Home" 
+    }
+    
+]

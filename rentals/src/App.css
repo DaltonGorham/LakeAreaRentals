@@ -1,0 +1,27 @@
+/* Base reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+}
+
+.layout {
+  display: flex;
+  padding-top: 150px; /* Space for fixed header */
+}
+
+/*grid for rentals */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Wider cards */
+  gap: 1.5rem; /* More spacing between cards */
+  padding: 0 2rem; /* Larger padding for a spacious layout */
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+
+
+

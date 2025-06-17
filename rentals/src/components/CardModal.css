@@ -1,0 +1,75 @@
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.modal-content h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #b00020;
+}
+
+.close-button:hover {
+  color: #8c0018;
+}
+
+.description-section {
+  display: block; 
+  text-align: center; 
+  margin: 1rem 0; 
+  font-size: 14px; 
+  line-height: 1.5; 
+  color: #333; 
+}
+
+.specs{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  text-align: center; 
+  margin: 1rem 0; 
+  font-size: 1rem; 
+  line-height: 1.5; 
+  color: #333; 
+}

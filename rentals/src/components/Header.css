@@ -1,0 +1,16 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #851026; /* strong red */
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom: 4px solid #000; /* black accent line */
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  height: 100px;
+}
