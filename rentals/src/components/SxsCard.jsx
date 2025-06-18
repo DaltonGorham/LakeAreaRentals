@@ -16,7 +16,7 @@ const SxsCard = ({ sxs }) => {
   return (
     <>
       <div className="sxs-card" onClick={handleToggleModal}>
-        <img src={sxs.image} alt={sxs.name} />
+        <img src={`${import.meta.env.BASE_URL}${sxs.image}`} alt={sxs.name} />
         <h3>{sxs.name}</h3>
         <p>${sxs.price_per_day}/day</p>
         <div className="actions">
@@ -36,7 +36,7 @@ const SxsCard = ({ sxs }) => {
               &times;
             </button>
             <h4>{sxs.name}</h4>
-            <img src={sxs.image} alt={sxs.name} />
+            <img src={`${import.meta.env.BASE_URL}${sxs.image}`} alt={sxs.name} />
             <div className="description-section">
                 <p>{sxs.description}</p>
             </div>

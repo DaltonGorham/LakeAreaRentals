@@ -16,7 +16,7 @@ const CarCard = ({ car }) => {
   return (
     <>
       <div className="car-card" onClick={handleToggleModal}>
-        <img src={car.image} alt={car.name} />
+        <img src={`${import.meta.env.BASE_URL}${car.image}`} alt={car.name} />
         <h3>{car.name}</h3>
         <p>${car.price_per_day}/day</p>
         <div className="actions">
@@ -36,7 +36,7 @@ const CarCard = ({ car }) => {
               &times;
             </button>
             <h4>{car.name}</h4>
-            <img src={car.image} alt={car.name} />
+            <img src={`${import.meta.env.BASE_URL}${car.image}`} alt={car.name} />
             <div className="description-section">
                 <p>{car.description}</p>
             </div>
