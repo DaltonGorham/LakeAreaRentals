@@ -73,3 +73,104 @@
   background: #8c0018; /* Slightly darker red on hover */
   transform: scale(1.05); /* Subtle button scaling */
 }
+
+
+@media (max-width: 850px) {
+  .car-card, .sxs-card, .rv-card {
+    width: 240px; 
+    height: 400px;
+    padding: 1rem; 
+  }
+
+  .car-card img, .sxs-card img, .rv-card img {
+    height: 150px; 
+  }
+
+  .car-card button, .sxs-card button, .rv-card button {
+    width: 200px; 
+    padding: 0.5rem 1rem; 
+    font-size: 0.8rem; 
+  }
+
+  .car-card h3, .sxs-card h3, .rv-card h3 {
+    font-size: 1rem;
+}
+}
+
+
+@media (max-width: 768px) {
+  .car-card, .sxs-card, .rv-card {
+    width: 230px; 
+    height: 400px;
+    padding: 1rem; 
+  }
+
+  .car-card img, .sxs-card img, .rv-card img {
+    height: 150px; 
+  }
+
+  .car-card button, .sxs-card button, .rv-card button {
+    width: 200px; 
+    padding: 0.5rem 1rem; 
+    font-size: 0.8rem; 
+  }
+
+  .car-card h3, .sxs-card h3, .rv-card h3 {
+    font-size: 1rem;
+}
+}
+
+
+@media (max-width: 500px) and (min-width: 401px) {
+  .car-card, .sxs-card, .rv-card {
+    width: 250px; 
+    height: 400px;
+  }
+
+  .car-card img, .sxs-card img, .rv-card img {
+    height: 140px; 
+  }
+
+  .car-card button, .sxs-card button, .rv-card button {
+    width: 180px; 
+    padding: 0.5rem; 
+    font-size: 0.75rem; 
+  }
+}
+
+
+@media (max-width: 400px) and (min-width: 350px) {
+  .car-card, .sxs-card, .rv-card {
+    width: 225px; 
+    height: 400px;
+  }
+
+  .car-card img, .sxs-card img, .rv-card img {
+    height: 140px;
+  }
+
+  .car-card button, .sxs-card button, .rv-card button {
+    width: 180px; 
+    padding: 0.5rem; 
+    font-size: 0.75rem; 
+  }
+}
+
+
+@media (max-width: 375px) {
+  .car-card, .sxs-card, .rv-card {
+    width: 220px; 
+    height: 400px;
+    padding: 0.7rem; 
+  }
+
+  .car-card img, .sxs-card img, .rv-card img {
+    height: 150px; 
+  }
+
+  .car-card button, .sxs-card button, .rv-card button {
+    width: 180px; 
+    padding: 0.5rem; 
+    font-size: 0.7rem; 
+  }
+}

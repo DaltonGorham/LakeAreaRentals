@@ -11,15 +11,60 @@ body {
   padding-top: 150px; /* Space for fixed header */
 }
 
-/*grid for rentals */
+
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Wider cards */
-  gap: 1.5rem; /* More spacing between cards */
-  padding: 0 2rem; /* Larger padding for a spacious layout */
+  margin-left: 190px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 1.5rem; 
+  padding: 0 2rem; 
   box-sizing: border-box;
-  width: 100%;
+  width: 100%
 }
+
+
+
+@media (max-width: 850px) {
+  .gallery {
+    margin-left: 220px; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 0.75rem; 
+    padding: 0.5rem; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .gallery {
+    margin-left: 150px; 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 0.75rem; 
+    padding: 0.5rem; 
+  }
+}
+
+
+
+@media (max-width: 450px) and (min-width: 350px) {
+  .gallery {
+    margin-left: 100px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 2rem; 
+    padding: 0.5rem; 
+  }
+}
+
+@media (max-width: 350px) {
+  .gallery {
+    margin-left: 80px; 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 0.5rem; 
+    padding: 0.5rem; 
+  }
+}
+
+
 
 
 

@@ -14,3 +14,27 @@
   z-index: 1000;
   height: 100px;
 }
+
+
+
+/* Media query for tablets */
+@media (max-width: 768px) {
+  .site-header {
+    font-size: 1.5rem;
+  }
+}
+
+/* Media query for phones (350px to 450px) */
+@media (max-width: 450px) and (min-width: 350px) {
+  .site-header {
+    font-size: 1rem;
+  }
+}
+
+/* Media query for very small phones */
+@media (max-width: 350px) {
+  .site-header {
+    font-size: 0.8rem;
+  }
+}
+
