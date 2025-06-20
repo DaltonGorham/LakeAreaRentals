@@ -1,48 +1,45 @@
 /* Card Container */
 .car-card, .sxs-card, .rv-card {
-  border: 1px solid #ddd; /* Softer border */
+  border: 1px solid #ddd; 
   padding: 1.5rem;
-  border-radius: 12px; /* Rounded corners for a modern look */
+  border-radius: 12px; 
   text-align: center;
-  background: #fff; /* Clean white background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth hover effect */
+  background: #fff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
   overflow: hidden;
   height: 550px; /* Fixed height */
-  width: 300px; /* Fixed width */
 }
 
 
 .car-card:hover, .sxs-card:hover, .rv-card:hover {
   cursor: pointer;
+  transform: translateY(-5px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.car-card:hover, .sxs-card:hover, .rv-card:hover {
-  transform: translateY(-5px); /* Slight lift on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-}
 
 /* Card Image */
 .car-card img, .sxs-card img, .rv-card img {
   width: 100%;
-  height: 200px; /* Fixed height for images */
-  border-radius: 8px; /* Slightly rounded corners for images */
-  margin-bottom: 1rem; /* Space between image and text */
-  object-fit: cover; /* Ensures images fit within the container */
+  height: 200px; 
+  border-radius: 8px; 
+  margin-bottom: 1rem; 
+  object-fit: cover; 
 }
 
 /* Card Title */
 .car-card h3, .sxs-card h3, .rv-card h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333; /* Darker text for readability */
+  color: #333; 
   margin-bottom: 0.5rem;
 }
 
 /* Card Description */
 .car-card p, .sxs-card p, .rv-card p {
   font-size: 1rem;
-  color: #666; /* Softer text color for descriptions */
+  color: #666; 
   margin-bottom: 1rem;
 }
 
@@ -50,9 +47,10 @@
 .price {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #b00020; /* Highlight price in brand color */
+  color: #b00020; 
   margin-bottom: 1rem;
 }
+
 
 /* Buttons */
 .car-card button, .sxs-card button, .rv-card button {
@@ -60,36 +58,48 @@
   background: #970e27;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem; /* Larger button for better usability */
-  font-size: 1rem;
+  padding: 0.75rem 1.5rem; 
+  font-size: 0.8rem;
   font-weight: bold;
-  border-radius: 8px; /* Rounded button for consistency */
+  border-radius: 8px; 
   cursor: pointer;
-  width: 250px; /* Fixed width for buttons */
-  transition: background 0.3s, transform 0.2s; /* Smooth hover effect */
+  width: 80%;
+  transition: background 0.3s, transform 0.2s; 
 }
 
 .car-card button:hover, .sxs-card button:hover, .rv-card button:hover {
-  background: #8c0018; /* Slightly darker red on hover */
-  transform: scale(1.05); /* Subtle button scaling */
+  background: #8c0018; 
+  transform: scale(1.05); 
+}
+
+@media (max-width: 1750px) and (min-width: 1301px) {
+
+  .car-card button, .sxs-card button, .rv-card button {
+    font-size: 0.7rem;
+  }
+
+  .car-card h3, .sxs-card h3, .rv-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media (max-width: 1300px) and (min-width: 851px) {
+  .car-card button, .sxs-card button, .rv-card button {
+    font-size: 0.7rem;
+  }
+
+  .car-card h3, .sxs-card h3, .rv-card h3 {
+    font-size: 1.1rem;
+  }
 }
 
 
 @media (max-width: 850px) {
-  .car-card, .sxs-card, .rv-card {
-    width: 240px; 
-    height: 400px;
-    padding: 1rem; 
-  }
-
-  .car-card img, .sxs-card img, .rv-card img {
-    height: 150px; 
-  }
 
   .car-card button, .sxs-card button, .rv-card button {
-    width: 200px; 
     padding: 0.5rem 1rem; 
-    font-size: 0.8rem; 
+    font-size: 0.7rem; 
   }
 
   .car-card h3, .sxs-card h3, .rv-card h3 {
@@ -99,55 +109,31 @@
 
 
 @media (max-width: 768px) {
-  .car-card, .sxs-card, .rv-card {
-    width: 230px; 
-    height: 400px;
-    padding: 1rem; 
-  }
 
-  .car-card img, .sxs-card img, .rv-card img {
-    height: 150px; 
+   .car-card, .sxs-card, .rv-card {
+    height: 450px;
   }
-
+ 
   .car-card button, .sxs-card button, .rv-card button {
-    width: 200px; 
-    padding: 0.5rem 1rem; 
-    font-size: 0.8rem; 
+    font-size: 0.65rem; 
   }
 
   .car-card h3, .sxs-card h3, .rv-card h3 {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 }
+
 
 
 @media (max-width: 500px) and (min-width: 401px) {
-  .car-card, .sxs-card, .rv-card {
-    width: 250px; 
-    height: 400px;
-  }
-
-  .car-card img, .sxs-card img, .rv-card img {
-    height: 140px; 
-  }
 
   .car-card button, .sxs-card button, .rv-card button {
-    width: 180px; 
-    padding: 0.5rem; 
-    font-size: 0.75rem; 
+    font-size: 0.6rem; 
   }
 }
 
 
 @media (max-width: 400px) and (min-width: 350px) {
-  .car-card, .sxs-card, .rv-card {
-    width: 225px; 
-    height: 400px;
-  }
-
-  .car-card img, .sxs-card img, .rv-card img {
-    height: 140px;
-  }
 
   .car-card button, .sxs-card button, .rv-card button {
     width: 180px; 
@@ -158,16 +144,7 @@
 
 
 @media (max-width: 375px) {
-  .car-card, .sxs-card, .rv-card {
-    width: 220px; 
-    height: 400px;
-    padding: 0.7rem; 
-  }
-
-  .car-card img, .sxs-card img, .rv-card img {
-    height: 150px; 
-  }
-
+  
   .car-card button, .sxs-card button, .rv-card button {
     width: 180px; 
     padding: 0.5rem; 
