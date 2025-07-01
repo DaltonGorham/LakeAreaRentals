@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; 
 import cars from './data/cars.json';
 import sxs from './data/sxs.json';
 import rv from './data/rv.json';
@@ -9,7 +9,7 @@ import CarCard from './components/CarCard';
 import SxsCard from './components/SxsCard';
 import RvCard from './components/RvCard';
 import Header from './components/Header';
-import AboutPage from './components/AboutPage'; // Create this component
+import AboutPage from './components/AboutPage';
 import './App.css';
 import './components/Cards.css';
 import './components/Sidebar.css';
@@ -50,14 +50,14 @@ function App() {
   const [category, setCategory] = useState('All');
 
   return (
-    <Router>
+    <>
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inventory" element={<InventoryPage category={category} setCategory={setCategory} />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

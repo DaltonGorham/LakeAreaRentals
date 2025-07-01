@@ -25,7 +25,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="hero-image" >
-            <img src="/logo.png" alt="Lake Area Rentals Logo"></img>
+            <img src="./logo.png" alt="Lake Area Rentals Logo"></img>
         </div>
       </section>
 
