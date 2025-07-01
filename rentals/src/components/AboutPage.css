@@ -1,0 +1,160 @@
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #f7fafc 60%, #e3f0fa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.about-hero {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 40px;
+}
+
+.about-hero .highlight {
+  color: #2d3a4a;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.about-tagline {
+  color: #4f8a8b;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.about-content section {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 2rem;
+  margin-bottom: 0;
+}
+
+.about-content section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.about-content h2 {
+  color: #23272f;
+  margin-bottom: 0.7rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.about-content ul {
+  color: #6b7280;
+  margin-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.about-content p {
+  color: #23272f;
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.about-content iframe {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 900px) {
+
+  .about-content {
+    padding: 1.2rem 1rem;
+    max-width: 95vw;
+  }
+
+  .about-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-content p, .about-content ul {
+    font-size: 1rem;
+  }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 600px) {
+
+
+  .about-hero .highlight {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .about-tagline {
+    font-size: 1rem;
+  }
+
+  .about-content {
+    padding: 1rem 0.5rem;
+    border-radius: 10px;
+    gap: 1.5rem;
+  }
+
+  .about-content h2 {
+    font-size: 1rem;
+  }
+
+  .about-content p, .about-content ul {
+    font-size: 0.95rem;
+  }
+
+  .about-content iframe {
+    height: 150px;
+  }
+}
+
+/* Extra Small Screens (300px - 400px) */
+@media (max-width: 400px) {
+  
+
+  .about-hero .highlight {
+    font-size: 1.3rem;
+  }
+
+  .about-tagline {
+    font-size: 0.9rem;
+  }
+
+  .about-content {
+    padding: 0.8rem 0.3rem;
+    gap: 1rem;
+  }
+
+  .about-content h2 {
+    font-size: 0.9rem;
+  }
+
+  .about-content p, .about-content ul {
+    font-size: 0.85rem;
+  }
+
+  .about-content iframe {
+    height: 120px;
+  }
+}
