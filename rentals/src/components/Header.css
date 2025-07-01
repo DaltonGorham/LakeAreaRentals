@@ -2,39 +2,81 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #851026; /* strong red */
-  color: white;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  border-bottom: 4px solid #000; /* black accent line */
+  background: #2D3A4A;
+  color: #fff;
   position: fixed;
   width: 100%;
   z-index: 1000;
   height: 100px;
+  border-bottom: 4px solid #4F8A8B;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 
 
-
-/* Media query for tablets */
-@media (max-width: 768px) {
-  .site-header {
-    font-size: 1.5rem;
-  }
+.logo-link {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-/* Media query for phones (350px to 450px) */
-@media (max-width: 450px) and (min-width: 350px) {
-  .site-header {
+.main-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background: #4F8A8B;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .logo-link {
     font-size: 1rem;
   }
-}
 
-/* Media query for very small phones */
-@media (max-width: 350px) {
-  .site-header {
-    font-size: 0.8rem;
+  .main-nav {
+    gap: 0.1rem;
+  }
+
+  .main-nav a {
+    font-size: 0.7rem;
   }
 }
+
+@media (max-width: 430px) {
+  .logo-link {
+    font-size: 0.9rem;
+  }
+
+  .main-nav {
+    gap: 0.1rem;
+  }
+
+  .main-nav a {
+    font-size: 0.6rem;
+  }
+}
+
+
 

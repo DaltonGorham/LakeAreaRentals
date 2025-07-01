@@ -37,9 +37,6 @@ const SxsCard = ({ sxs }) => {
             </button>
             <h4>{sxs.name}</h4>
             <img src={sxs.image} alt={sxs.name} />
-            <div className="description-section">
-                <p>{sxs.description}</p>
-            </div>
             <div className="specs">
                 <p><strong>Engine: </strong>{sxs.engine}</p>
                 <p><strong>Fuel: </strong>{sxs.fuel_type}</p>

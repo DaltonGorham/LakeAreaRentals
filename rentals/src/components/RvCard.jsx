@@ -37,9 +37,6 @@ const RvCard = ({ rv }) => {
             </button>
             <h4>{rv.name}</h4>
             <img src={rv.image} alt={rv.name} />
-            <div className="description-section">
-                <p>{rv.description}</p>
-            </div>
             <div className="specs">
                 <p><strong>Fuel: </strong>{rv.fuel_type}</p>
                 <p><strong>MPG City: </strong>{rv.mpg_city}</p>

@@ -2,7 +2,6 @@
     {
         "id": 1,
         "name": "2020 Toyota Camry",
-        "description": "The 2020 Toyota Camry offers a perfect blend of style, comfort, and reliability. With its sleek design and spacious interior, this sedan is ideal for both city driving and long road trips. Enjoy a smooth ride and peace of mind with a vehicle built to last.",
         "fuel_type": "Gas",
         "mpg_city": 29,
         "mpg_highway": 41,
@@ -14,7 +13,6 @@
     {
         "id": 2,
         "name": "2015 Chevorlet Silverado",
-        "description": "A comfortable and fuel-efficient truck.",
         "fuel_type": "Gas",
         "mpg_city": 13,
         "mpg_highway": 21,
