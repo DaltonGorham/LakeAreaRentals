@@ -36,7 +36,6 @@ const SxsCard = ({ sxs }) => {
               &times;
             </button>
             <h4>{sxs.name}</h4>
-            <img src={sxs.image} alt={sxs.name} />
             <img src={`${import.meta.env.BASE_URL}${sxs.image}`} alt={sxs.name} />
             <div className="specs">
                 <p><strong>Engine: </strong>{sxs.engine}</p>

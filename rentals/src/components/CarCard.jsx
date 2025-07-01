@@ -36,7 +36,6 @@ const CarCard = ({ car }) => {
               &times;
             </button>
             <h4>{car.name}</h4>
-            <img src={car.image} alt={car.name} />
             <img src={`${import.meta.env.BASE_URL}${car.image}`} alt={car.name} />
             <div className="specs">
                 <p><strong>Fuel: </strong>{car.fuel_type}</p>
