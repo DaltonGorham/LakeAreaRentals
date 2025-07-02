@@ -2,7 +2,7 @@
     {
         "id": 10,
         "name": "2025 CF Moto U10 Pro",
-        "image": "/images/sxs/cf-moto-black.png",
+        "image": "./images/sxs/cf-moto-black.png",
         "fuel_type": "Gas",
         "engine": "998cc, 3-cyclinder, 4-stroke",
         "horse_power": 88,
