@@ -7,7 +7,7 @@
         "mpg_city": 6,
         "mpg_highway": 8,
         "sleeps": 10,
-        "image": "/images/rv/thor_rv.jpeg",
+        "image": "./images/rv/thor_rv.jpeg",
         "price_per_day": "400",
         "category": "Motor Home" 
     }

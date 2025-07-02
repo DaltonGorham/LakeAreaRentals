@@ -5,7 +5,7 @@
         "fuel_type": "Gas",
         "mpg_city": 29,
         "mpg_highway": 41,
-        "image": "/images/cars/toyota-camry.jpg",
+        "image": "./images/cars/toyota-camry.jpg",
         "price_per_day": 50,
         "category": "Cars"
     },
@@ -16,7 +16,7 @@
         "fuel_type": "Gas",
         "mpg_city": 13,
         "mpg_highway": 21,
-        "image": "/images/cars/truck.jpg",
+        "image": "./images/cars/truck.jpg",
         "price_per_day": "60",
         "category": "Cars" 
     }
