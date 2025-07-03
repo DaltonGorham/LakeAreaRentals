@@ -5,8 +5,9 @@
         "fuel_type": "Gas",
         "mpg_city": 29,
         "mpg_highway": 41,
-        "image": "./images/cars/toyota-camry.jpg",
+        "images": ["./images/cars/toyota-camry.jpg", "./images/cars/camry-inside.jpg"],
         "price_per_day": 50,
+        "seats": 5,
         "category": "Cars"
     },
 
@@ -16,8 +17,9 @@
         "fuel_type": "Gas",
         "mpg_city": 13,
         "mpg_highway": 21,
-        "image": "./images/cars/truck.jpg",
+        "images": ["./images/cars/truck.jpg", "./images/cars/silverado-inside.jpeg"],
         "price_per_day": "60",
+        "seats": 3,
         "category": "Cars" 
     }
 

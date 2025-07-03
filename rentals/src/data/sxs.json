@@ -8,6 +8,7 @@
         "horse_power": 88,
         "torque": "69 lb-ft",
         "price_per_day": 200,
+        "seats": 6,
         "category": "SXS"
     }
 ]
