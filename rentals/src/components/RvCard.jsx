@@ -45,7 +45,7 @@ const RvCard = ({ rv }) => {
   return (
     <>
       <div className="rv-card" onClick={handleToggleModal}>
-        <img src={`${import.meta.env.BASE_URL}${rv.image}`} alt={rv.name} />
+        <img src={`${import.meta.env.BASE_URL}${cardImage}`} alt={rv.name} />
         <h3>{rv.name}</h3>
         <p>${rv.price_per_day}/day</p>
         <div className="actions">

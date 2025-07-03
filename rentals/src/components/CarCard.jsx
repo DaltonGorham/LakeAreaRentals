@@ -45,7 +45,7 @@ const CarCard = ({ car }) => {
   return (
     <>
       <div className="car-card" onClick={handleToggleModal}>
-        <img src={`${import.meta.env.BASE_URL}${car.image}`} alt={car.name} />
+        <img src={`${import.meta.env.BASE_URL}${cardImage}`} alt={car.name} />
         <h3>{car.name}</h3>
         <p>${car.price_per_day}/day</p>
         <div className="actions">

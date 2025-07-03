@@ -45,7 +45,7 @@ const SxsCard = ({ sxs }) => {
   return (
     <>
       <div className="sxs-card" onClick={handleToggleModal}>
-        <img src={`${import.meta.env.BASE_URL}${sxs.image}`} alt={sxs.name} />
+        <img src={`${import.meta.env.BASE_URL}${cardImage}`} alt={sxs.name} />
         <h3>{sxs.name}</h3>
         <p>${sxs.price_per_day}/day</p>
         <div className="actions">
