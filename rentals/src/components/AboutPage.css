@@ -1,10 +1,26 @@
+/* About Page - Dark Theme */
 .about-container {
   min-height: 100vh;
-  background: linear-gradient(120deg, #f7fafc 60%, #e3f0fa 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 40px;
+  position: relative;
+}
+
+/* Background overlay for depth */
+.about-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .about-hero {
@@ -13,18 +29,43 @@
   text-align: center;
   margin-top: 120px;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.about-hero h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .about-hero .highlight {
-  color: #2d3a4a;
+  background: linear-gradient(45deg, #f59e0b, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 800;
   letter-spacing: 2px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.6));
+  }
 }
 
 .about-tagline {
-  color: #4f8a8b;
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.2rem;
   margin-top: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .about-content {
@@ -32,18 +73,43 @@
   max-width: 1000px;
   margin: 40px auto 0 auto;
   padding: 2rem 2.5rem 2.5rem 2.5rem;
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.06);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glossy effect overlay */
+.about-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  pointer-events: none;
+  border-radius: 24px 24px 0 0;
 }
 
 .about-content section {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 2rem;
   margin-bottom: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .about-content section:last-child {
@@ -52,40 +118,55 @@
 }
 
 .about-content h2 {
-  color: #23272f;
+  color: #ffffff;
   margin-bottom: 0.7rem;
   font-size: 1.35rem;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .about-content ul {
-  color: #6b7280;
+  color: #cbd5e1;
   margin-left: 1.2rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.7;
 }
 
+.about-content ul li {
+  margin-bottom: 0.5rem;
+}
+
 .about-content p {
-  color: #23272f;
+  color: #e2e8f0;
   margin-bottom: 0.5rem;
   font-size: 1.08rem;
   line-height: 1.7;
 }
 
+.about-content strong {
+  color: #0ea5e9;
+  font-weight: 600;
+}
+
 .about-content iframe {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 15px;
   margin-top: 1rem;
-  box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.about-content iframe:hover {
+  transform: scale(1.02);
 }
 
 /* Medium Screens (Tablets) */
 @media (max-width: 900px) {
-
   .about-content {
     padding: 1.2rem 1rem;
     max-width: 95vw;
+    border-radius: 20px;
   }
 
   .about-content h2 {
@@ -95,11 +176,17 @@
   .about-content p, .about-content ul {
     font-size: 1rem;
   }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
 }
 
 /* Small Screens (Mobile) */
 @media (max-width: 600px) {
-
+  .about-hero h1 {
+    font-size: 2rem;
+  }
 
   .about-hero .highlight {
     font-size: 1.5rem;
@@ -112,7 +199,7 @@
 
   .about-content {
     padding: 1rem 0.5rem;
-    border-radius: 10px;
+    border-radius: 16px;
     gap: 1.5rem;
   }
 
@@ -126,12 +213,15 @@
 
   .about-content iframe {
     height: 150px;
+    border-radius: 10px;
   }
 }
 
 /* Extra Small Screens (300px - 400px) */
 @media (max-width: 400px) {
-  
+  .about-hero h1 {
+    font-size: 1.8rem;
+  }
 
   .about-hero .highlight {
     font-size: 1.3rem;
@@ -144,6 +234,7 @@
   .about-content {
     padding: 0.8rem 0.3rem;
     gap: 1rem;
+    border-radius: 12px;
   }
 
   .about-content h2 {

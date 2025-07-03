@@ -3,14 +3,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-  background: white;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
 }
 
 .layout {
   display: flex;
   padding-top: 150px; /* Space for fixed header */
 }
-
 
 
 .gallery {
@@ -36,8 +35,6 @@ body {
   }
 }
 
-
-
 @media (max-width: 900px) {
   .gallery {
     margin-left: 220px; 
@@ -45,7 +42,6 @@ body {
     padding: 0.5rem; 
   }
 }
-
 
 @media (max-width: 768px) {
   .gallery {
@@ -60,13 +56,13 @@ body {
   }
 }
 
-
 @media (max-width: 450px) and (min-width: 350px) {
   .gallery {
-    margin-left: 100px;
+    margin-left: 95px;
     padding: 0.5rem; 
   }
 }
+
 
 @media (max-width: 350px) {
   .gallery {
