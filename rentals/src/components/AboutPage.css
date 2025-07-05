@@ -127,10 +127,11 @@
 
 .about-content ul {
   color: #cbd5e1;
-  margin-left: 1.2rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.7;
+  padding-left: 0;
+  list-style-position: inside;
 }
 
 .about-content ul li {

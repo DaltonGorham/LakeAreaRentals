@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AboutPage.css";
 
 export default function AboutPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="about-container">
       <div className="about-hero">
@@ -28,13 +32,13 @@ export default function AboutPage() {
         <section>
           <h2>Contact & Location</h2>
           <p>
-            <strong>Address:</strong> 1819 AR-25, Heber Springs, AR 72543<br />
+            <strong>Address:</strong> 110 Fisher Cook Rd, Rose Bud, AR 72137<br />
             <strong>Phone:</strong> (501) 250-6398<br />
             <strong>Email:</strong> info@lakearearentals.com
           </p>
           <iframe
             title="Lake Area Rentals Location"
-            src="https://www.google.com/maps?q=1819+AR-25,+Heber+Springs,+AR+72543&output=embed"
+              src="https://www.google.com/maps?q=110+Fisher+Cook+Rd,+Rose+Bud,+AR+72137&output=embed"
             width="100%"
             height="180"
             style={{ border: 0, borderRadius: "10px", marginTop: "1rem" }}

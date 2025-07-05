@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="landing-modern">
@@ -30,64 +34,50 @@ export default function LandingPage() {
       </section>
 
       <section className="features-section">
-        <div className="feature-card">
-          <h2>Why Choose Us?</h2>
-          <ul>
-            <li>Wide Variety of vehicles</li>
-            <li>Friendly, local service</li>
-            <li>Flexible rental terms</li>
-            <li>Convenient location</li>
-          </ul>
+        <div className="feature-card rental-card">
+          <h2>Ready to Rent?</h2>
+          <p>Download our rental agreement form to get started with your reservation.</p>
+          <button 
+            className="rental-btn"
+            onClick={() => navigate("/rental-agreement")}
+          >
+            Get Rental Form
+          </button>
         </div>
+
         <div className="feature-card location-card">
-          <h2>Visit Us</h2>
-          <p>1819 AR-25, Heber Springs, AR 72543</p>
-          <iframe
-            title="Lake Area Rentals Location"
-            src="https://www.google.com/maps?q=1819+AR-25,+Heber+Springs,+AR+72543&output=embed"
-            width="100%"
-            height="180"
-            style={{ border: 0, borderRadius: "10px", marginTop: "1rem" }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
+          <h2>Pick Up / Drop Off Locations</h2>
+          <div className="locations-container">
+            <div className="location">
+              <h3>Heber Springs</h3>
+              <p>1819 AR-25, Heber Springs, AR 72543</p>
+              <iframe
+                title="Heber Springs Location"
+                src="https://www.google.com/maps?q=1819+AR-25,+Heber+Springs,+AR+72543&output=embed"
+                width="100%"
+                height="180"
+                style={{ border: 0, borderRadius: "10px", marginTop: "1rem" }}
+                allowFullScreen=""
+                loading="lazy"
+              />
+            </div>
+            
+            <div className="location">
+              <h3>Rose Bud</h3>
+              <p>110 Fisher Cook Rd, Rose Bud, AR 72137</p>
+              <iframe
+                title="Rose Bud Location"
+                src="https://www.google.com/maps?q=110+Fisher+Cook+Rd,+Rose+Bud,+AR+72137&output=embed"
+                width="100%"
+                height="180"
+                style={{ border: 0, borderRadius: "10px", marginTop: "1rem" }}
+                allowFullScreen=""
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </section>
-
-       <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>Lake Area Rentals</h3>
-            <p>Your trusted partner for vehicle rentals in Heber Springs and the surrounding lake area.</p>
-          </div>
-          
-          <div className="footer-section">
-            <h4>Contact Info</h4>
-            <p>1819 AR-25, Heber Springs, AR 72543</p>
-            <p>Phone: (501) 250-6398</p>
-            <p>Email: info@lakearearentals.com</p>
-          </div>
-          
-          <div className="footer-section">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><button onClick={() => navigate("/inventory")}>Inventory</button></li>
-              <li><button onClick={() => navigate("/about")}>About Us</button></li>
-            </ul>
-          </div>
-          
-          <div className="footer-section">
-            <h4>Hours</h4>
-            <p>Monday - Friday: 8AM - 6PM</p>
-            <p>Saturday: 9AM - 5PM</p>
-            <p>Sunday: 10AM - 4PM</p>
-          </div>
-        </div>
-        
-        <div className="footer-bottom">
-          <p>&copy; 2025 Lake Area Rentals. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }

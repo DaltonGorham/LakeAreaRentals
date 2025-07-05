@@ -67,7 +67,7 @@
 
 /* Modal Header Section - Compact on short screens */
 .modal-header {
-  background: linear-gradient(135deg, #2d3a4a 0%, #4f8a8b 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
   padding: min(2rem, 3vh) min(2rem, 4vw) min(1rem, 1.5vh) min(2rem, 4vw);
   border-radius: clamp(12px, 2vh, 20px) clamp(12px, 2vh, 20px) 0 0;
   position: relative;
@@ -84,9 +84,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(20px);
+  animation: headerGlow 4s ease-in-out infinite alternate;
   pointer-events: none;
 }
+
 
 /* Modal Body - Aggressive scrolling management */
 .modal-body {
@@ -271,11 +277,12 @@
   color: #ffffff;
   margin-bottom: min(0.5rem, 1vh);
   padding-right: min(3rem, 12vw);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.3px;
   position: relative;
   z-index: 1;
   line-height: 1.1;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Responsive Close Button */
@@ -331,9 +338,9 @@
   margin: 0;
   font-size: clamp(0.8rem, 1.8vh, 1rem);
   line-height: 1.4;
-  color: #2d3a4a;
-  background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
-  border: 1px solid rgba(79, 138, 139, 0.15);
+  color: #334155;
+  background: linear-gradient(145deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid rgba(215, 222, 225, 0.15);
   border-radius: clamp(8px, 1.5vh, 16px);
   padding: min(2rem, 2.5vh) min(2rem, 3vw);
   position: relative;
@@ -351,19 +358,28 @@
   left: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(to bottom, #4f8a8b, #2d3a4a);
+  background: linear-gradient(to bottom, #2c6883, #1e293b);
   border-radius: 0 1px 1px 0;
 }
 
 .specs > * {
   margin: 0;
   padding: min(0.5rem, 0.8vh) 0;
-  border-bottom: 1px solid rgba(79, 138, 139, 0.1);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.1);
   font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.specs > *:hover {
+  background: rgba(14, 165, 233, 0.02);
+  border-radius: 4px;
+  margin: 0 -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .specs > *:last-child {
@@ -371,7 +387,7 @@
 }
 
 .specs strong {
-  color: #2d3a4a;
+  color: #1e293b;
   font-weight: 600;
   min-width: min(120px, 30%);
   flex-shrink: 0;
