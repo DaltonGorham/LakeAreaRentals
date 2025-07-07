@@ -52,7 +52,7 @@ const SxsCard = ({ sxs }) => {
             <a href="tel:501-250-6398" aria-label="Call for more details">
             <button>📞 Call for More Details</button>
             </a>
-            <a href="mailto:info@lakearearentals.com" aria-label="Email for more details">
+            <a href="mailto:info@lakearearentalsllc.com" aria-label="Email for more details">
             <button>✉️ Email for More Details</button>
             </a>
         </div>

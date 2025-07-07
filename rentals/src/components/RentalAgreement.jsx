@@ -7,9 +7,9 @@ export default function RentalAgreement() {
     }, []);  
     
   const handleDownload = () => {
-    // Create a link to download the PDF
+
     const link = document.createElement('a');
-    link.href = './rental-agreement-form.pdf'; // Put your PDF in the public folder
+    link.href = './rental-agreement-form.pdf'; 
     link.download = 'Lake-Area-Rentals-Agreement.pdf';
     link.click();
   };
@@ -64,7 +64,7 @@ export default function RentalAgreement() {
               <div className="step-number">3</div>
               <div className="step-content">
                 <h3>Email Back to Us</h3>
-                <p>Send the completed form to <strong>info@lakearearentals.com</strong></p>
+                <p>Send the completed form to <strong>info@lakearearentalsllc.com</strong></p>
               </div>
             </div>
             
@@ -86,7 +86,7 @@ export default function RentalAgreement() {
           </p>
           <div className="contact-info">
             <p><strong>Phone:</strong> (501) 250-6398</p>
-            <p><strong>Email:</strong> info@lakearearentals.com</p>
+            <p><strong>Email:</strong> info@lakearearentalsllc.com</p>
           </div>
         </section>
       </div>
