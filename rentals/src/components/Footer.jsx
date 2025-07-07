@@ -17,7 +17,7 @@ export default function Footer() {
           <h4>Contact Info</h4>
           <p>110 Fisher Cook Rd, Rose Bud, AR 72137</p>
           <p>Phone: (501) 250-6398</p>
-          <p>Email: info@lakearearentals.com</p>
+          <p>Email: info@lakearearentalsllc.com</p>
         </div>
         
         <div className="footer-section">
@@ -32,8 +32,8 @@ export default function Footer() {
         <div className="footer-section">
           <h4>Hours</h4>
           <p>Monday - Friday: 8AM - 6PM</p>
-          <p>Saturday: 9AM - 5PM</p>
-          <p>Sunday: 10AM - 4PM</p>
+          <p>Saturday: 9AM - 6PM</p>
+          <p>Sunday: 10AM - 6PM</p>
         </div>
       </div>
       

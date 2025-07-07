@@ -34,7 +34,7 @@ export default function AboutPage() {
           <p>
             <strong>Address:</strong> 110 Fisher Cook Rd, Rose Bud, AR 72137<br />
             <strong>Phone:</strong> (501) 250-6398<br />
-            <strong>Email:</strong> info@lakearearentals.com
+            <strong>Email:</strong> info@lakearearentalsllc.com
           </p>
           <iframe
             title="Lake Area Rentals Location"
