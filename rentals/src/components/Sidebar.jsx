@@ -2,7 +2,7 @@ import { React } from 'react';
 
 
 const Sidebar = ({ selected, onSelect }) => {
-  const categories = ['All', 'Cars', 'SXS', 'Motor Home'];
+  const categories = ['All', 'Cars', 'SXS', 'Motor Home', 'Trailers'];
 
   return (
     <aside className="sidebar">

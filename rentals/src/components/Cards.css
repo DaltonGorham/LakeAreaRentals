@@ -1,5 +1,5 @@
 /* Card Container - Dark Theme */
-.car-card, .sxs-card, .rv-card {
+.car-card, .sxs-card, .rv-card, .trailer-card {
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1.5rem;
   border-radius: 14px;
@@ -12,14 +12,14 @@
   height: 550px;
 }
 
-.car-card:hover, .sxs-card:hover, .rv-card:hover {
+.car-card:hover, .sxs-card:hover, .rv-card:hover, .trailer-card:hover {
   cursor: pointer;
   transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* Card Image */
-.car-card img, .sxs-card img, .rv-card img {
+.car-card img, .sxs-card img, .rv-card img, .trailer-card img {
   width: 100%;
   height: 200px;
   border-radius: 10px;
@@ -28,7 +28,7 @@
 }
 
 /* Card Title */
-.car-card h3, .sxs-card h3, .rv-card h3 {
+.car-card h3, .sxs-card h3, .rv-card h3, .trailer-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -36,7 +36,7 @@
 }
 
 /* Card Description */
-.car-card p, .sxs-card p, .rv-card p {
+.car-card p, .sxs-card p, .rv-card p, .trailer-card p {
   font-size: 1rem;
   color: #cbd5e1;
   margin-bottom: 1rem;
@@ -51,7 +51,7 @@
 }
 
 /* Buttons */
-.car-card button, .sxs-card button, .rv-card button {
+.car-card button, .sxs-card button, .rv-card button, .trailer-card button {
   margin-top: 1rem;
   background: #2d3a4a;
   color: #fff;
@@ -65,48 +65,48 @@
   transition: background 0.3s, transform 0.2s;
 }
 
-.car-card button:hover, .sxs-card button:hover, .rv-card button:hover {
+.car-card button:hover, .sxs-card button:hover, .rv-card button:hover, .trailer-card button:hover {
   background: linear-gradient(45deg, #0ea5e9, #0284c7);
   transform: scale(1.05);
 }
 
 @media (max-width: 1750px) and (min-width: 1301px) {
-  .car-card button, .sxs-card button, .rv-card button {
+  .car-card button, .sxs-card button, .rv-card button, .trailer-card button {
     font-size: 0.7rem;
   }
-  .car-card h3, .sxs-card h3, .rv-card h3 {
+  .car-card h3, .sxs-card h3, .rv-card h3, .trailer-card h3 {
     font-size: 1.2rem;
   }
 }
 
 @media (max-width: 1300px) and (min-width: 851px) {
-  .car-card button, .sxs-card button, .rv-card button {
+  .car-card button, .sxs-card button, .rv-card button, .trailer-card button {
     font-size: 0.7rem;
   }
-  .car-card h3, .sxs-card h3, .rv-card h3 {
+  .car-card h3, .sxs-card h3, .rv-card h3, .trailer-card h3 {
     font-size: 1.1rem;
   }
 }
 
 @media (max-width: 850px) {
-  .car-card button, .sxs-card button, .rv-card button {
+  .car-card button, .sxs-card button, .rv-card button, .trailer-card button {
     padding: 0.5rem 1rem; 
     font-size: 0.7rem; 
   }
-  .car-card h3, .sxs-card h3, .rv-card h3 {
+  .car-card h3, .sxs-card h3, .rv-card h3, .trailer-card h3 {
     font-size: 1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .car-card, .sxs-card, .rv-card {
+  .car-card, .sxs-card, .rv-card, .trailer-card {
     height: 450px;
   }
- 
-  .car-card button, .sxs-card button, .rv-card button {
+
+  .car-card button, .sxs-card button, .rv-card button, .trailer-card button {
     font-size: 0.65rem; 
   }
-  .car-card h3, .sxs-card h3, .rv-card h3 {
+  .car-card h3, .sxs-card h3, .rv-card h3, .trailer-card h3 {
     font-size: 0.8rem;
   }
 }
