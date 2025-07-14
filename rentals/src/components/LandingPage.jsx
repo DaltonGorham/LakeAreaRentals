@@ -17,7 +17,7 @@ export default function LandingPage() {
             <span className="highlight">Lake Area Rentals</span>
           </h1>
           <p className="subtitle">
-            Reliable cars, RVs, and side-by-sides for every adventure in Heber Springs and beyond.
+            Reliable rentals for every adventure in Heber Springs and beyond.
           </p>
           <div className="cta-buttons">
             <button className="primary" onClick={() => navigate("/inventory")}>
