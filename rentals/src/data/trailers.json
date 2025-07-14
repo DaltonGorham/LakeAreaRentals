@@ -1,7 +1,7 @@
 [
     {
         "id": 101,
-        "name": "18 Ft BIR Trailer",
+        "name": "18 Ft B/R Trailer",
         "images": ["./images/trailers/trailer2.jpeg", "./images/trailers/trailer1.jpeg", "./images/trailers/trailer4.jpeg", "./images/trailers/trailer5.jpeg"],
         "length": "18 Feet",
         "loading_ramps": true,
