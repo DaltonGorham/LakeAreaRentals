@@ -1,14 +1,14 @@
 [
     {
-        "id": 10,
-        "name": "2025 CF Moto U10 Pro",
-        "image": "./images/sxs/cf-moto-black.png",
-        "fuel_type": "Gas",
-        "engine": "998cc, 3-cyclinder, 4-stroke",
-        "horse_power": 88,
-        "torque": "69 lb-ft",
-        "price_per_day": 200,
-        "seats": 6,
+        "id": 11,
+        "name": "Club Car 4 Passenger",
+        "images": ["./images/sxs/GolfCart_Side.jpg", "./images/sxs/GolfCart_Back.jpg", "./images/sxs/GolfCart_Front.jpg"],
+        "fuel_type": "Electric",
+        "engine": "48V Electric Motor",
+        "horse_power": "N/A",
+        "torque": "N/A",
+        "price_per_day": 25,
+        "seats": 4,
         "category": "SXS"
     }
 ]

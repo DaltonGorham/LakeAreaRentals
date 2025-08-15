@@ -1,19 +1,19 @@
 [
     {
         "id": 1,
-        "name": "2020 Toyota Camry",
+        "name": "Chrysler Pacifica",
         "fuel_type": "Gas",
-        "mpg_city": 29,
-        "mpg_highway": 41,
-        "images": ["./images/cars/toyota-camry.jpg", "./images/cars/camry-inside.jpg"],
-        "price_per_day": 50,
-        "seats": 5,
+        "mpg_city": 19,
+        "mpg_highway": 28,
+        "images": ["./images/cars/Chrysler_Side.jpg", "./images/cars/Chrysler_Front.jpg", "./images/cars/Chrysler_Seats.jpg", "./images/cars/Chrysler_Screen.jpg", "./images/cars/Chrysler_Backseat.jpg"],
+        "price_per_day": "100",
+        "seats": 7,
         "category": "Cars"
     },
 
     {
         "id": 2,
-        "name": "2015 Chevorlet Silverado",
+        "name": "Chevrolet Silverado",
         "fuel_type": "Gas",
         "mpg_city": 13,
         "mpg_highway": 21,
@@ -21,6 +21,30 @@
         "price_per_day": "60",
         "seats": 3,
         "category": "Cars" 
+    },
+
+    {
+        "id": 3,
+        "name": "Hyundai Elantra SEL",
+        "fuel_type": "Gas",
+        "mpg_city": 26,
+        "mpg_highway": 36,
+        "images": ["./images/cars/Hyundai_Front.jpg", "./images/cars/Hyundai_Side.jpg", "./images/cars/Hyundai_Inside.jpg", "./images/cars/Hyundai_Screen.jpg"],
+        "price_per_day": "49",
+        "seats": 5,
+        "category": "Cars"
+    },
+
+    {
+        "id": 4,
+        "name": "GMC Acadia SLT",
+        "fuel_type": "Gas",
+        "mpg_city": 16,
+        "mpg_highway": 19,
+        "images": ["./images/cars/Acadia_Front.jpg", "./images/cars/Acadia_Side.jpg", "./images/cars/Acadia_Tv.jpg"],
+        "price_per_day": "65",
+        "seats": 5,
+        "category": "Cars"
     }
 
 
