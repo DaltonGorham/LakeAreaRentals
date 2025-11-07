@@ -1,15 +1,4 @@
 [
-    {
-        "id": 1,
-        "name": "Chrysler Pacifica",
-        "fuel_type": "Gas",
-        "mpg_city": 19,
-        "mpg_highway": 28,
-        "images": ["./images/cars/Chrysler_Side.jpg", "./images/cars/Chrysler_Front.jpg", "./images/cars/Chrysler_Seats.jpg", "./images/cars/Chrysler_Screen.jpg", "./images/cars/Chrysler_Backseat.jpg"],
-        "price_per_day": "100",
-        "seats": 7,
-        "category": "Cars"
-    },
 
     {
         "id": 2,
