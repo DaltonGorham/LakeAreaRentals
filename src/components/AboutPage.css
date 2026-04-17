@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   z-index: 0;
   pointer-events: none;
@@ -34,11 +34,11 @@
 }
 
 .about-hero h1 {
-  color: white;
+  color: var(--color-text);
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .about-hero .highlight {
@@ -61,7 +61,7 @@
 }
 
 .about-tagline {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-muted);
   font-size: 1.2rem;
   margin-top: 1rem;
   line-height: 1.6;
@@ -73,13 +73,13 @@
   max-width: 1000px;
   margin: 40px auto 0 auto;
   padding: 2rem 2.5rem 2.5rem 2.5rem;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-surface-light);
   backdrop-filter: blur(20px);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-surface-border);
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 16px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -96,16 +96,16 @@
   right: 0;
   height: 40%;
   background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.02) 100%
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0.08) 100%
   );
   pointer-events: none;
   border-radius: 24px 24px 0 0;
 }
 
 .about-content section {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   padding-bottom: 2rem;
   margin-bottom: 0;
   position: relative;
@@ -118,11 +118,11 @@
 }
 
 .about-content h2 {
-  color: #ffffff;
+  color: var(--color-text);
   margin-bottom: 0.7rem;
   font-size: 1.35rem;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 .about-content ul {

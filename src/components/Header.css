@@ -67,15 +67,15 @@
 
 .main-nav a {
   text-decoration: none;
-  color: white;
+  color: var(--color-text);
   font-weight: 600;
   font-size: 1.1rem;
   padding: 0.8rem 1.5rem;
   border-radius: 50px;
   transition: all 0.3s ease;
   position: relative;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(10px);
 }
 
@@ -95,8 +95,8 @@
 
 .main-nav a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
-  color: white;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.2);
+  color: var(--color-on-primary);
 }
 
 .main-nav a:hover::before {
@@ -105,7 +105,7 @@
 
 .main-nav a.active {
   background: var(--color-primary-gradient);
-  color: white;
+  color: var(--color-on-primary);
   box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
   border: 1px solid var(--color-primary-soft);
 }
@@ -159,7 +159,7 @@
 /* Tablets */
 @media (max-width: 768px) {
   .site-header {
-    background: linear-gradient(135deg, rgba(36, 24, 18, 0.98), rgba(56, 39, 33, 0.98));
+    background: rgba(255, 255, 255, 0.96);
   }
   
   .header-content {
@@ -185,7 +185,7 @@
 /* Mobile Phones */
 @media (max-width: 480px) {
   .site-header {
-    background: linear-gradient(135deg, rgba(36, 24, 18, 0.99), rgba(56, 39, 33, 0.99));
+    background: rgba(255, 255, 255, 0.97);
   }
   
   .header-content {

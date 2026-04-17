@@ -19,12 +19,14 @@
   --color-primary-hover: #991b1b;
   --color-primary-gradient: linear-gradient(45deg, var(--color-primary), var(--color-primary-hover));
   --color-primary-soft: rgba(220, 38, 38, 0.3);
+  --color-on-primary: #ffffff;
 
   /* Accent — bright red */
   --color-accent: #ef4444;
   --color-accent-hover: #b91c1c;
   --color-accent-gradient: linear-gradient(45deg, var(--color-accent), var(--color-accent-hover));
   --color-accent-soft: rgba(239, 68, 68, 0.3);
+  --color-on-accent: #ffffff;
 
   /* Text on white bg (dark text is primary now) */
   --color-text: #1a1a1a;

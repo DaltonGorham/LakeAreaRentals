@@ -43,8 +43,8 @@
   font-weight: 800;
   margin-bottom: 1.5rem;
   line-height: 1.1;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: var(--color-text);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .highlight {
@@ -66,7 +66,7 @@
 
 .subtitle {
   font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-muted);
   margin-bottom: 2.5rem;
   line-height: 1.6;
   font-weight: 400;
@@ -93,7 +93,7 @@
 
 .cta-buttons .primary {
   background: var(--color-primary-gradient);
-  color: white;
+  color: var(--color-on-primary);
   box-shadow: 0 10px 30px var(--color-primary-soft);
 }
 
@@ -103,14 +103,14 @@
 }
 
 .cta-buttons .secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: var(--color-surface-light);
+  color: var(--color-text);
+  border: 2px solid var(--color-surface-border);
   backdrop-filter: blur(10px);
 }
 
 .cta-buttons .secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-surface-light-alt);
   transform: translateY(-3px);
 }
 
@@ -186,7 +186,7 @@
 
 .rental-btn {
   background: var(--color-accent-gradient);
-  color: white;
+  color: var(--color-on-accent);
   border: none;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;

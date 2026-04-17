@@ -27,9 +27,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.03);
   color: var(--color-text-muted);
   font: inherit;
   font-size: 0.9rem;
@@ -39,14 +39,14 @@
 }
 
 .chip:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.18);
 }
 
 .chip.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-on-primary);
 }
 
 .chip-count {
@@ -56,7 +56,7 @@
   min-width: 1.5em;
   padding: 0 0.4em;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.08);
   font-size: 0.75rem;
   font-weight: 600;
   color: inherit;
