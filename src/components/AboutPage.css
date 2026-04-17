@@ -1,7 +1,7 @@
 /* About Page - Dark Theme */
 .about-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  background: var(--color-bg-gradient);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@
 }
 
 .about-hero .highlight {
-  background: linear-gradient(45deg, #f59e0b, #d97706);
+  background: var(--color-accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -53,10 +53,10 @@
 
 @keyframes glow {
   from {
-    filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.3));
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.3));
   }
   to {
-    filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.6));
+    filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.6));
   }
 }
 
@@ -126,7 +126,7 @@
 }
 
 .about-content ul {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.7;
@@ -139,14 +139,14 @@
 }
 
 .about-content p {
-  color: #e2e8f0;
+  color: var(--color-text-muted);
   margin-bottom: 0.5rem;
   font-size: 1.08rem;
   line-height: 1.7;
 }
 
 .about-content strong {
-  color: #0ea5e9;
+  color: var(--color-primary);
   font-weight: 600;
 }
 

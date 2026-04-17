@@ -1,6 +1,6 @@
 /* Footer */
 .footer {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(30, 41, 59, 0.1) 20%, #1e293b 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(36, 24, 18, 0.1) 20%, var(--color-bg-start) 100%);
   color: white;
   padding: 6rem 0 2rem;
   margin-top: 0;
@@ -17,9 +17,9 @@
   bottom: 0;
   background: linear-gradient(180deg, 
     transparent 0%, 
-    rgba(30, 41, 59, 0.05) 30%, 
-    rgba(30, 41, 59, 0.1) 60%, 
-    rgba(30, 41, 59, 0.9) 100%
+    rgba(36, 24, 18, 0.05) 30%, 
+    rgba(36, 24, 18, 0.1) 60%, 
+    rgba(36, 24, 18, 0.9) 100%
   );
   backdrop-filter: blur(5px);
 }
@@ -54,21 +54,21 @@
 }
 
 .footer-section h3 {
-  color: #f59e0b;
+  color: var(--color-accent);
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .footer-section h4 {
-  color: #0ea5e9;
+  color: var(--color-primary);
   margin-bottom: 1.2rem;
   font-size: 1.3rem;
   font-weight: 600;
 }
 
 .footer-section p {
-  color: #cbd5e1;
+  color: var(--color-text-muted);
   line-height: 1.8;
   margin-bottom: 0.8rem;
   font-size: 1rem;
@@ -87,7 +87,7 @@
 .footer-section ul button {
   background: none;
   border: none;
-  color: #cbd5e1;
+  color: var(--color-text-muted);
   cursor: pointer;
   padding: 0.5rem 0;
   font-size: 1rem;
@@ -97,8 +97,8 @@
 }
 
 .footer-section ul button:hover {
-  color: #0ea5e9;
-  border-bottom: 1px solid #0ea5e9;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
   transform: translateX(5px);
 }
 
@@ -107,10 +107,10 @@
   margin-top: 3rem;
   padding-top: 2rem;
   text-align: center;
-  color: #94a3b8;
+  color: var(--color-text-subtle);
   position: relative;
   z-index: 2;
-  background: linear-gradient(180deg, transparent 0%, rgba(30, 41, 59, 0.3) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(36, 24, 18, 0.3) 100%);
 }
 
 
@@ -136,7 +136,7 @@
 
   .footer {
     padding: 3rem 0 1.5rem;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(30, 41, 59, 0.08) 15%, #1e293b 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(36, 24, 18, 0.08) 15%, var(--color-bg-start) 100%);
   }
   
   .footer-content {
