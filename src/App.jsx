@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Header from './components/Header';
@@ -8,11 +8,10 @@ import InventoryPage from './components/InventoryPage';
 import Footer from './components/Footer';
 import './App.css';
 import './components/Cards.css';
-import './components/Sidebar.css';
 import './components/Header.css';
 
 function App() {
-  const [category, setCategory] = useState('All');
+  const [category, setCategory] = useState('all');
   const location = useLocation();
 
   return (
