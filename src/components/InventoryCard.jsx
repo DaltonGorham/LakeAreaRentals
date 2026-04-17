@@ -30,6 +30,7 @@ const SPECS = {
 export default function InventoryCard({ item, type }) {
   const [showModal, setShowModal] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isExpandedView, setIsExpandedView] = useState(false);
 
   const images = item.images || [item.image];
   const totalImages = images.length;
@@ -37,9 +38,13 @@ export default function InventoryCard({ item, type }) {
 
   const openModal = () => {
     setCurrentImageIndex(0);
+    setIsExpandedView(false);
     setShowModal(true);
   };
-  const closeModal = () => setShowModal(false);
+  const closeModal = () => {
+    setShowModal(false);
+    setIsExpandedView(false);
+  };
 
   const stop = (e) => e.stopPropagation();
 
@@ -72,7 +77,7 @@ export default function InventoryCard({ item, type }) {
 
       {showModal && (
         <div className="modal" onClick={closeModal}>
-          <div className="modal-content" onClick={stop}>
+          <div className={`modal-content${isExpandedView ? ' expanded' : ''}`} onClick={stop}>
             <div className="modal-header">
               <button className="close-button" onClick={closeModal} aria-label="Close">
                 &times;
@@ -81,21 +86,48 @@ export default function InventoryCard({ item, type }) {
             </div>
 
             <div className="modal-body">
-              <div className="image-container" data-single-image={isSingleImage}>
-                <img
-                  src={images[currentImageIndex]}
-                  alt={`${item.name} - Image ${currentImageIndex + 1}`}
-                />
+              <div className={`image-container${isExpandedView ? ' expanded' : ''}`} data-single-image={isSingleImage}>
+                <div className="image-stage">
+                  <img
+                    className="modal-main-image"
+                    src={images[currentImageIndex]}
+                    alt={`${item.name} - Image ${currentImageIndex + 1}`}
+                  />
+                </div>
                 {!isSingleImage && (
                   <>
-                    <button className="nav-arrow prev" onClick={prevImage} aria-label="Previous image">‹</button>
-                    <button className="nav-arrow next" onClick={nextImage} aria-label="Next image">›</button>
+                    <button type="button" className="nav-arrow prev" onClick={prevImage} aria-label="Previous image">‹</button>
+                    <button type="button" className="nav-arrow next" onClick={nextImage} aria-label="Next image">›</button>
                     <div className="image-counter">
                       <span className="current-image">{currentImageIndex + 1}</span> / <span className="total-images">{totalImages}</span>
                     </div>
                   </>
                 )}
               </div>
+
+              <button
+                type="button"
+                className="image-size-toggle"
+                onClick={() => setIsExpandedView((value) => !value)}
+              >
+                {isExpandedView ? 'Default size' : 'View larger'}
+              </button>
+
+              {!isSingleImage && (
+                <div className="thumbnail-row" aria-label="Image thumbnails">
+                  {images.map((image, index) => (
+                    <button
+                      key={`${item.id}-${index}`}
+                      type="button"
+                      className={`thumbnail-button${index === currentImageIndex ? ' active' : ''}`}
+                      onClick={() => setCurrentImageIndex(index)}
+                      aria-label={`View image ${index + 1}`}
+                    >
+                      <img src={image} alt={`${item.name} thumbnail ${index + 1}`} loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+              )}
 
               <div className="specs">
                 {specs.map(([label, value]) => (
