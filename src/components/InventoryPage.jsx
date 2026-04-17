@@ -1,51 +1,56 @@
-import React from 'react';
-import Sidebar from './Sidebar';
-import CarCard from './CarCard';
-import SxsCard from './SxsCard';
-import RvCard from './RvCard';
-import TrailerCard from './TrailerCard';
+import { useMemo } from 'react';
+import FilterChips from './FilterChips';
+import InventoryCard from './InventoryCard';
 import cars from '../data/cars.json';
 import sxs from '../data/sxs.json';
 import rv from '../data/rv.json';
 import trailers from '../data/trailers.json';
-import './InventoryPage.css'; 
+import './InventoryPage.css';
 
-function InventoryPage({ category, setCategory }) {
-  const filteredCars = category === 'All'
-    ? cars
-    : cars.filter(car => car.category.toLowerCase() === category.toLowerCase());
+const CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 'car', label: 'Cars' },
+  { key: 'sxs', label: 'SXS' },
+  { key: 'rv', label: 'RVs' },
+  { key: 'trailer', label: 'Trailers' },
+];
 
-  const filteredSxs = category === 'All'
-    ? sxs
-    : sxs.filter(sxs => sxs.category.toLowerCase() === category.toLowerCase());
+export default function InventoryPage({ category, setCategory }) {
+  const items = useMemo(
+    () => [
+      ...cars.map((c) => ({ ...c, _type: 'car' })),
+      ...sxs.map((s) => ({ ...s, _type: 'sxs' })),
+      ...rv.map((r) => ({ ...r, _type: 'rv' })),
+      ...trailers.map((t) => ({ ...t, _type: 'trailer' })),
+    ],
+    []
+  );
 
-  const filteredRv = category === 'All'
-    ? rv
-    : rv.filter(rv => rv.category.toLowerCase() === category.toLowerCase());
+  const selected = category || 'all';
 
-  const filteredTrailers = category === 'All'
-    ? trailers
-    : trailers.filter(trailer => trailer.category.toLowerCase() === category.toLowerCase());
+  const chips = CATEGORIES.map((c) => ({
+    ...c,
+    count: c.key === 'all' ? items.length : items.filter((i) => i._type === c.key).length,
+  }));
+
+  const visible = selected === 'all' ? items : items.filter((i) => i._type === selected);
 
   return (
-    <div className="layout">
-      <Sidebar selected={category} onSelect={setCategory} />
-      <div className="gallery">
-        {filteredCars.map(car => (
-          <CarCard key={car.id} car={car} />
-        ))}
-        {filteredSxs.map(sxs => (
-          <SxsCard key={sxs.id} sxs={sxs} />
-        ))}
-        {filteredRv.map(rv => (
-          <RvCard key={rv.id} rv={rv} />
-        ))}
-        {filteredTrailers.map(trailer => (
-          <TrailerCard key={trailer.id} trailer={trailer} />
-        ))}
+    <main className="inventory">
+      <div className="inventory-header">
+        <h1>Inventory</h1>
+        <FilterChips categories={chips} selected={selected} onSelect={setCategory} />
       </div>
-    </div>
+
+      {visible.length === 0 ? (
+        <p className="inventory-empty">Nothing in this category yet.</p>
+      ) : (
+        <div className="inventory-grid">
+          {visible.map((item) => (
+            <InventoryCard key={`${item._type}-${item.id}`} item={item} type={item._type} />
+          ))}
+        </div>
+      )}
+    </main>
   );
 }
-
-export default InventoryPage;

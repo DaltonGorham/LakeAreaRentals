@@ -1,17 +1,4 @@
 [
-
-    {
-        "id": 2,
-        "name": "Chevrolet Silverado",
-        "fuel_type": "Gas",
-        "mpg_city": 13,
-        "mpg_highway": 21,
-        "images": ["/images/cars/truck.jpg", "/images/cars/silverado-inside.jpeg"],
-        "price_per_day": "60",
-        "seats": 3,
-        "category": "Cars" 
-    },
-
     {
         "id": 3,
         "name": "Hyundai Elantra SEL",
