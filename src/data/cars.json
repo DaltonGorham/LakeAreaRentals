@@ -6,7 +6,7 @@
         "fuel_type": "Gas",
         "mpg_city": 13,
         "mpg_highway": 21,
-        "images": ["./images/cars/truck.jpg", "./images/cars/silverado-inside.jpeg"],
+        "images": ["/images/cars/truck.jpg", "/images/cars/silverado-inside.jpeg"],
         "price_per_day": "60",
         "seats": 3,
         "category": "Cars" 
@@ -18,7 +18,7 @@
         "fuel_type": "Gas",
         "mpg_city": 26,
         "mpg_highway": 36,
-        "images": ["./images/cars/Hyundai_Front.jpg", "./images/cars/Hyundai_Side.jpg", "./images/cars/Hyundai_Inside.jpg", "./images/cars/Hyundai_Screen.jpg"],
+        "images": ["/images/cars/Hyundai_Front.jpg", "/images/cars/Hyundai_Side.jpg", "/images/cars/Hyundai_Inside.jpg", "/images/cars/Hyundai_Screen.jpg"],
         "price_per_day": "49",
         "seats": 5,
         "category": "Cars"
@@ -30,7 +30,7 @@
         "fuel_type": "Gas",
         "mpg_city": 16,
         "mpg_highway": 19,
-        "images": ["./images/cars/Acadia_Front.jpg", "./images/cars/Acadia_Side.jpg", "./images/cars/Acadia_Tv.jpg"],
+        "images": ["/images/cars/Acadia_Front.jpg", "/images/cars/Acadia_Side.jpg", "/images/cars/Acadia_Tv.jpg"],
         "price_per_day": "65",
         "seats": 5,
         "category": "Cars"

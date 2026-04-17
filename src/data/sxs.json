@@ -2,7 +2,7 @@
     {
         "id": 11,
         "name": "Club Car 4 Passenger",
-        "images": ["./images/sxs/GolfCart_Side.jpg", "./images/sxs/GolfCart_Back.jpg", "./images/sxs/GolfCart_Front.jpg"],
+        "images": ["/images/sxs/GolfCart_Side.jpg", "/images/sxs/GolfCart_Back.jpg", "/images/sxs/GolfCart_Front.jpg"],
         "fuel_type": "Electric",
         "engine": "48V Electric Motor",
         "horse_power": "N/A",
