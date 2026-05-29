@@ -1,105 +1,230 @@
-.inventory-card {
+/* ---------- Inventory card ---------- */
+.inv-card {
+  --cat: var(--color-primary);
+  --cat-soft: rgba(0, 0, 0, 0.1);
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--color-surface-light);
-  border: 1px solid var(--color-surface-border);
-  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.inventory-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(220, 38, 38, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+.inv-card:hover,
+.inv-card:focus-visible {
+  border-color: rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
+  outline: none;
 }
 
-.card-image {
+.inv-card:focus-visible {
+  box-shadow: var(--shadow-md), 0 0 0 3px var(--cat-soft);
+}
+
+/* Media */
+.inv-card-media {
+  position: relative;
   aspect-ratio: 4 / 3;
-  background: rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  background: #eceef1;
 }
 
-.card-image img {
+.inv-card-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
 }
 
-.inventory-card:hover .card-image img {
-  transform: scale(1.03);
+.inv-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.32) 0%, transparent 38%);
+  pointer-events: none;
 }
 
-.card-body {
+.inv-card-cue {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.85rem;
+  z-index: 2;
+  padding: 0.34rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--cat);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.inv-card:hover .inv-card-cue {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Body */
+.inv-card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem 1.25rem;
+  gap: 0.85rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+  flex: 1;
 }
 
-.card-body h3 {
+.inv-card-name {
   margin: 0;
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.22rem;
   font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: var(--color-text);
-  line-height: 1.3;
 }
 
-.card-body .price {
+.inv-card-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
   margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--color-primary);
+  padding: 0;
+  list-style: none;
 }
 
-.card-body .price span {
-  color: var(--color-text-subtle);
+.inv-card-highlights li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-size: 0.8rem;
   font-weight: 500;
-  font-size: 0.9rem;
-  margin-left: 0.15rem;
+  color: var(--color-text-muted);
 }
 
-.card-body .actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-top: auto;
+.inv-card-highlights svg {
+  font-size: 1rem;
+  color: var(--cat);
 }
 
-.card-body .btn {
+/* ---------- Shared buttons (used in modal) ---------- */
+.inv-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.625rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.875rem;
+  gap: 0.45rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
+    color 0.18s ease, border-color 0.18s ease;
 }
 
-.card-body .btn-primary {
+.inv-btn svg {
+  font-size: 1.15rem;
+}
+
+.inv-btn-lg {
+  padding: 0.85rem 1.1rem;
+  font-size: 0.98rem;
+  border-radius: var(--radius-md);
+}
+
+.inv-btn-primary {
   background: var(--color-primary-gradient);
   color: var(--color-on-primary);
+  box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.35);
 }
 
-.card-body .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+.inv-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.4);
 }
 
-.card-body .btn-secondary {
-  background: var(--color-surface-light-alt);
+.inv-btn-outline {
+  background: #fff;
   color: var(--color-text);
-  border: 1px solid var(--color-surface-border);
+  border-color: rgba(0, 0, 0, 0.14);
 }
 
-.card-body .btn-secondary:hover {
-  background: var(--color-surface-light);
-  transform: translateY(-1px);
+.inv-btn-outline:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 640px) {
+  .inv-card {
+    border-radius: var(--radius-md);
+  }
+
+  .inv-card:hover,
+  .inv-card:focus-visible {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .inv-card-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .inv-card-media::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.24) 0%, transparent 34%);
+  }
+
+  .inv-card-cue {
+    display: none;
+  }
+
+  .inv-card-body {
+    gap: 0.65rem;
+    padding: 0.85rem 0.95rem 0.95rem;
+  }
+
+  .inv-card-name {
+    font-size: 1.05rem;
+    line-height: 1.25;
+  }
+
+  .inv-card-highlights {
+    gap: 0.35rem;
+  }
+
+  .inv-card-highlights li {
+    padding: 0.24rem 0.48rem;
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .inv-card-highlights svg {
+    font-size: 0.92rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .inv-card-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .inv-card-body {
+    padding: 0.8rem 0.85rem 0.9rem;
+  }
+
+  .inv-card-name {
+    font-size: 1rem;
+  }
 }

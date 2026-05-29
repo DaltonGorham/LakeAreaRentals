@@ -7,8 +7,15 @@
         "engine": "48V Electric Motor",
         "horse_power": "N/A",
         "torque": "N/A",
-        "price_per_day": 25,
         "seats": 4,
-        "category": "SXS"
+        "category": "SXS",
+        "additional_features": [
+            "48V electric motor",
+            "Seats 4 passengers",
+            "Headlights & taillights for evening use",
+            "Fold-down rear seat",
+            "Windshield",
+            "USB charging port"
+        ]
     }
 ]

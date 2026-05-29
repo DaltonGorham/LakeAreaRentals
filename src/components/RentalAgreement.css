@@ -1,298 +1,294 @@
-/* Rental Agreement Page - Dark Theme */
 .rental-container {
   min-height: 100vh;
-  background: var(--color-bg-gradient);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
-  position: relative;
+  padding: 7rem 1.25rem 4rem;
+  background: #fff;
+  color: var(--color-text);
+  font-family: var(--font-body);
 }
 
-/* Background overlay for depth */
-.rental-container::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  z-index: 0;
-  pointer-events: none;
+.rental-header,
+.rental-content {
+  width: min(980px, 100%);
+  margin: 0 auto;
 }
 
 .rental-header {
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 3rem;
-  position: relative;
-  z-index: 2;
+  margin-bottom: 2rem;
+}
+
+.rental-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--color-text-eyebrow);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .rental-header h1 {
-  color: var(--color-text);
-  font-size: 3rem;
+  max-width: 760px;
+  margin: 0;
+  font-size: clamp(2.75rem, 6vw, 5rem);
   font-weight: 800;
-  margin-bottom: 1rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-.rental-header .highlight {
-  background: var(--color-accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-  letter-spacing: 2px;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.3));
-  }
-  to {
-    filter: drop-shadow(0 0 30px rgba(239, 68, 68, 0.6));
-  }
+  line-height: 0.98;
 }
 
 .rental-tagline {
+  max-width: 620px;
+  margin: 1rem 0 0;
   color: var(--color-text-muted);
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  line-height: 1.6;
-  font-weight: 400;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  line-height: 1.55;
 }
 
 .rental-content {
-  width: 100%;
-  max-width: 800px;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  display: grid;
+  gap: 1.25rem;
 }
 
-/* Download Section */
 .download-section {
-  display: flex;
-  justify-content: center;
+  display: block;
 }
 
 .download-card {
-  background: var(--color-surface-light);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid var(--color-surface-border);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: 3rem 2rem;
-  text-align: center;
-  max-width: 500px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem 1.25rem;
+  align-items: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-md);
+  background: #f7f4fb;
+  box-shadow: var(--shadow-sm);
 }
 
 .pdf-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: var(--shadow-sm);
 }
 
 .download-card h2 {
-  color: var(--color-text);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: none;
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 800;
 }
 
 .download-card p {
+  grid-column: 2;
+  max-width: 520px;
+  margin: 0;
   color: var(--color-text-muted);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.55;
+}
+
+.download-btn,
+.contact-info a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 8px;
+  background: var(--color-text);
+  color: #fff;
+  border: 1px solid var(--color-text);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    transform 0.18s ease;
 }
 
 .download-btn {
-  background: var(--color-accent-gradient);
-  color: var(--color-on-accent);
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 0.75rem;
 }
 
-.download-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.4);
+.download-btn:hover,
+.contact-info a:hover {
+  transform: translateY(-1px);
+  background: #000;
+  border-color: #000;
 }
 
-/* Instructions Section */
 .instructions-section {
-  background: var(--color-surface-light);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid var(--color-surface-border);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: 2.5rem;
+  padding: clamp(2rem, 4vw, 3rem) 0;
 }
 
 .instructions-section h2 {
-  color: var(--color-text);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
-  text-shadow: none;
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
 }
 
 .steps {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
 }
 
 .step {
   display: grid;
-  grid-template-columns: 40px 1fr;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
   align-items: start;
-  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .step-number {
-  background: var(--color-primary-gradient);
-  color: var(--color-on-primary);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px var(--color-primary-soft);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: #f7f4fb;
+  color: var(--color-primary);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 1.05rem;
 }
 
 .step-content h3 {
+  margin: 0 0 0.35rem;
   color: var(--color-text);
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 800;
 }
 
 .step-content p {
-  color: var(--color-text-muted);
-  font-size: 1rem;
-  line-height: 1.6;
   margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 .step-content strong {
-  color: var(--color-primary);
-  font-weight: 600;
+  color: var(--color-text);
+  font-weight: 700;
 }
 
-/* Contact Section */
 .contact-section {
-  background: var(--color-surface-light);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  border: 1px solid var(--color-surface-border);
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  padding: 2.5rem;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.75rem 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-section h2 {
-  color: var(--color-text);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: none;
+  margin: 0;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 800;
 }
 
 .contact-section p {
+  max-width: 480px;
+  margin: 0.5rem 0 0;
   color: var(--color-text-muted);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
+  line-height: 1.55;
 }
 
-.contact-info p {
-  color: var(--color-text-muted);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.65rem;
 }
 
-.contact-info strong {
-  color: var(--color-primary);
-  font-weight: 600;
+.contact-info a {
+  background: #fff;
+  color: var(--color-text);
+  border-color: rgba(0, 0, 0, 0.14);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .rental-header h1 {
-    font-size: 2.5rem;
+.contact-info a:hover {
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .rental-container {
+    padding: 6rem 1rem 3rem;
   }
-  
-  .rental-tagline {
-    font-size: 1rem;
-  }
-  
+
   .download-card {
-    padding: 2rem 1.5rem;
+    grid-template-columns: auto 1fr;
   }
-  
-  .instructions-section,
+
+  .download-btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
   .contact-section {
-    padding: 2rem 1.5rem;
-  }
-  
-  .step {
-    grid-template-columns: 34px 1fr;
-    gap: 0.85rem;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .step-number {
-    width: 34px;
-    height: 34px;
-    font-size: 0.95rem;
-  }
-
-  .step-content {
-    text-align: left;
+  .contact-info {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 480px) {
+  .rental-container {
+    padding-inline: 0.85rem;
+  }
+
   .rental-header h1 {
-    font-size: 2rem;
+    font-size: clamp(2.35rem, 12vw, 3.1rem);
   }
-  
+
   .download-card {
-    padding: 1.5rem 1rem;
+    padding: 1rem;
   }
-  
+
+  .pdf-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 0.8rem;
+  }
+
   .download-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
-  
-  .instructions-section,
-  .contact-section {
-    padding: 1.5rem 1rem;
+
+  .download-card p {
+    font-size: 0.95rem;
+  }
+
+  .contact-info,
+  .contact-info a,
+  .download-btn {
+    width: 100%;
   }
 }

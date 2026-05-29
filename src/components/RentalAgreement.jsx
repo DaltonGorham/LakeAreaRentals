@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { CheckIcon, MailIcon, PhoneIcon } from "./Icons";
 import "./RentalAgreement.css";
 
 export default function RentalAgreement() {
@@ -16,23 +17,21 @@ export default function RentalAgreement() {
 
   return (
     <div className="rental-container">
-      <div className="rental-header">
-        <h1>Rental <span className="highlight">Agreement</span></h1>
+      <section className="rental-header">
+        <p className="rental-eyebrow">Rental form</p>
+        <h1>Rental agreement</h1>
         <p className="rental-tagline">
-          Download, complete, and email back our rental agreement form
+          Download the form, fill it out, and email it back before pickup so your rental is ready to go.
         </p>
-      </div>
+      </section>
 
       <div className="rental-content">
         <section className="download-section">
           <div className="download-card">
-            <div className="pdf-icon">
-              📄
-            </div>
+            <div className="pdf-icon" aria-hidden="true">PDF</div>
             <h2>Download Rental Agreement</h2>
             <p>
-              Click the button below to download our rental agreement form. 
-              Please fill it out completely and email it back to us.
+              Save the PDF, complete each required field, then send it to our team for review.
             </p>
             
             <button className="download-btn" onClick={handleDownload}>
@@ -45,7 +44,7 @@ export default function RentalAgreement() {
           <h2>How to Complete Your Rental</h2>
           <div className="steps">
             <div className="step">
-              <div className="step-number">1</div>
+              <div className="step-number"><CheckIcon /></div>
               <div className="step-content">
                 <h3>Download the Form</h3>
                 <p>Click the download button above to get the rental agreement PDF.</p>
@@ -53,7 +52,7 @@ export default function RentalAgreement() {
             </div>
             
             <div className="step">
-              <div className="step-number">2</div>
+              <div className="step-number"><CheckIcon /></div>
               <div className="step-content">
                 <h3>Fill Out Completely</h3>
                 <p>Complete all required fields in the PDF form using Adobe Reader or similar.</p>
@@ -61,7 +60,7 @@ export default function RentalAgreement() {
             </div>
             
             <div className="step">
-              <div className="step-number">3</div>
+              <div className="step-number"><CheckIcon /></div>
               <div className="step-content">
                 <h3>Email Back to Us</h3>
                 <p>Send the completed form to <strong>info@lakearearentalsllc.com</strong></p>
@@ -69,7 +68,7 @@ export default function RentalAgreement() {
             </div>
             
             <div className="step">
-              <div className="step-number">4</div>
+              <div className="step-number"><CheckIcon /></div>
               <div className="step-content">
                 <h3>We'll Confirm</h3>
                 <p>We'll review your application and contact you to confirm your rental.</p>
@@ -79,14 +78,15 @@ export default function RentalAgreement() {
         </section>
 
         <section className="contact-section">
-          <h2>Questions?</h2>
-          <p>
-            If you have any questions about the rental process or need assistance, 
-            feel free to contact us:
-          </p>
+          <div>
+            <h2>Questions?</h2>
+            <p>
+              If you have questions about pricing, availability, or the form, contact us before submitting.
+            </p>
+          </div>
           <div className="contact-info">
-            <p><strong>Phone:</strong> (501) 250-6398</p>
-            <p><strong>Email:</strong> info@lakearearentalsllc.com</p>
+            <a href="tel:501-250-6398"><PhoneIcon /> (501) 250-6398</a>
+            <a href="mailto:info@lakearearentalsllc.com"><MailIcon /> Email us</a>
           </div>
         </section>
       </div>

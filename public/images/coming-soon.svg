@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Photos coming soon" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="cs-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1f3f6"/>
+      <stop offset="1" stop-color="#e2e6eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#cs-bg)"/>
+  <g fill="none" stroke="#9aa3af" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="translate(400 178)">
+    <path d="M-58 -22 l14 -20 h88 l14 20 h22 a14 14 0 0 1 14 14 v66 a14 14 0 0 1 -14 14 h-160 a14 14 0 0 1 -14 -14 v-66 a14 14 0 0 1 14 -14 z"/>
+    <circle cx="0" cy="26" r="30"/>
+  </g>
+  <text x="400" y="300" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="44" font-weight="700" fill="#6b7280" letter-spacing="0.5">Photos Coming Soon</text>
+</svg>
