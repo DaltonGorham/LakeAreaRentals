@@ -12,10 +12,10 @@
 }
 
 .header-content {
-  max-width: 1240px;
+  max-width: none;
   margin: 0 auto;
   height: 78px;
-  padding: 0 5%;
+  padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -30,7 +30,7 @@
   font-size: clamp(1.1rem, 2.4vw, 1.8rem);
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .logo-link {
@@ -75,20 +75,16 @@
 
 .main-nav a:hover {
   color: var(--color-text);
-  background: rgba(220, 38, 38, 0.08);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .main-nav a.active {
   background: var(--color-primary-gradient);
   color: var(--color-on-primary);
-  box-shadow: 0 6px 14px rgba(220, 38, 38, 0.28);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
 @media (min-width: 1200px) {
-  .header-content {
-    padding: 0 7%;
-  }
-
   .main-nav a {
     padding: 0.6rem 1.05rem;
   }

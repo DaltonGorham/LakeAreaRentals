@@ -1,10 +1,7 @@
-import { useMemo } from 'react';
 import FilterChips from './FilterChips';
 import InventoryCard from './InventoryCard';
-import cars from '../data/cars.json';
-import sxs from '../data/sxs.json';
-import rv from '../data/rv.json';
-import trailers from '../data/trailers.json';
+import { SearchIcon } from './Icons';
+import { ALL_ITEMS } from '../data/inventory';
 import './InventoryPage.css';
 
 const CATEGORIES = [
@@ -16,15 +13,7 @@ const CATEGORIES = [
 ];
 
 export default function InventoryPage({ category, setCategory }) {
-  const items = useMemo(
-    () => [
-      ...cars.map((c) => ({ ...c, _type: 'car' })),
-      ...sxs.map((s) => ({ ...s, _type: 'sxs' })),
-      ...rv.map((r) => ({ ...r, _type: 'rv' })),
-      ...trailers.map((t) => ({ ...t, _type: 'trailer' })),
-    ],
-    []
-  );
+  const items = ALL_ITEMS;
 
   const selected = category || 'all';
 
@@ -37,13 +26,18 @@ export default function InventoryPage({ category, setCategory }) {
 
   return (
     <main className="inventory">
-      <div className="inventory-header">
-        <h1>Inventory</h1>
+      <div className="inventory-toolbar">
         <FilterChips categories={chips} selected={selected} onSelect={setCategory} />
       </div>
 
       {visible.length === 0 ? (
-        <p className="inventory-empty">Nothing in this category yet.</p>
+        <div className="inventory-empty">
+          <SearchIcon className="inventory-empty-icon" />
+          <p>Nothing in this category yet.</p>
+          <button className="inventory-empty-reset" onClick={() => setCategory('all')}>
+            View all vehicles
+          </button>
+        </div>
       ) : (
         <div className="inventory-grid">
           {visible.map((item) => (
