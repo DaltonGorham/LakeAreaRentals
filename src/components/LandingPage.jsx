@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   CarIcon,
@@ -6,31 +6,33 @@ import {
   SxsIcon,
   TrailerIcon,
 } from "./Icons";
+import { fetchCategoryImages } from "../lib/inventory";
+import { PLACEHOLDER_IMAGE } from "./specs";
 import "./LandingPage.css";
 
 const categories = [
   {
     label: "Cars",
+    type: "car",
     copy: "Clean, comfortable vehicles for errands, weekend trips, and lake visits.",
-    image: "/images/cars/Hyundai_Front.jpg",
     icon: <CarIcon />,
   },
   {
     label: "RVs",
+    type: "rv",
     copy: "Roomy motorhome rentals for family travel and longer stays.",
-    image: "/images/rv/thor_rv.jpeg",
     icon: <RvIcon />,
   },
   {
     label: "SXS",
+    type: "sxs",
     copy: "Easy electric rides for campgrounds, neighborhoods, and local cruising.",
-    image: "/images/sxs/GolfCart_Front.jpg",
     icon: <SxsIcon />,
   },
   {
     label: "Trailers",
+    type: "trailer",
     copy: "Utility trailer options for equipment, cargo, and project hauling.",
-    image: "/images/trailers/trailer2.jpeg",
     icon: <TrailerIcon />,
   },
 ];
@@ -39,9 +41,13 @@ const carouselCategories = [...categories, ...categories];
 
 export default function LandingPage() {
   const navigate = useNavigate();
+  const [categoryImages, setCategoryImages] = useState({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchCategoryImages()
+      .then(setCategoryImages)
+      .catch(() => {});
   }, []);
 
   return (
@@ -63,7 +69,7 @@ export default function LandingPage() {
 
         <div className="category-carousel" aria-label="Rental categories">
           <div className="category-track">
-            {carouselCategories.map(({ label, copy, image, icon }, index) => (
+            {carouselCategories.map(({ label, type, copy, icon }, index) => (
               <button
                 key={`${label}-${index}`}
                 type="button"
@@ -72,7 +78,7 @@ export default function LandingPage() {
                 aria-hidden={index >= categories.length}
                 tabIndex={index >= categories.length ? -1 : 0}
               >
-                <img src={image} alt="" loading="lazy" />
+                <img src={categoryImages[type] || PLACEHOLDER_IMAGE} alt="" loading="lazy" />
                 <span className="category-tile-content">
                   <span className="category-tile-title">
                     {icon} {label}

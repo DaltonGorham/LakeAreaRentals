@@ -1,12 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CarIcon, CheckIcon, GridIcon, MailIcon, PhoneIcon } from "./Icons";
+import { fetchCategoryImages } from "../lib/inventory";
+import { PLACEHOLDER_IMAGE } from "./specs";
 import "./AboutPage.css";
 
 export default function AboutPage() {
+  const [categoryImages, setCategoryImages] = useState({});
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchCategoryImages()
+      .then(setCategoryImages)
+      .catch(() => {});
   }, []);
+
+  // First available image across categories, used for the hero/intro.
+  const introImage =
+    categoryImages.car ||
+    categoryImages.sxs ||
+    categoryImages.rv ||
+    categoryImages.trailer ||
+    PLACEHOLDER_IMAGE;
 
   const benefits = [
     {
@@ -35,17 +50,17 @@ export default function AboutPage() {
     {
       title: "Find the right rental",
       copy: "Browse inventory and pick the vehicle, RV, side-by-side, or trailer that fits your plans.",
-      image: "/images/cars/Hyundai_Front.jpg",
+      image: categoryImages.car || PLACEHOLDER_IMAGE,
     },
     {
       title: "Call or email for pricing",
       copy: "We confirm availability, pricing, pickup timing, and rental requirements directly with you.",
-      image: "/images/sxs/GolfCart_Front.jpg",
+      image: categoryImages.sxs || PLACEHOLDER_IMAGE,
     },
     {
       title: "Fill out the rental form",
       copy: "Submit the rental agreement before pickup so everything is ready when you arrive.",
-      image: "/images/trailers/trailer2.jpeg",
+      image: categoryImages.trailer || PLACEHOLDER_IMAGE,
     },
   ];
 
@@ -53,7 +68,7 @@ export default function AboutPage() {
     <div className="about-container">
       <section className="about-intro" aria-labelledby="about-intro-title">
         <div className="about-intro-media">
-          <img src="/images/cars/truck.jpg" alt="Lake Area Rentals vehicle ready for pickup" />
+          <img src={introImage} alt="Lake Area Rentals vehicle ready for pickup" />
         </div>
         <div className="about-intro-copy">
           <p className="about-eyebrow">Lake Area Rentals</p>

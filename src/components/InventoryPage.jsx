@@ -1,7 +1,8 @@
+import { useState, useEffect } from 'react';
 import FilterChips from './FilterChips';
 import InventoryCard from './InventoryCard';
 import { SearchIcon } from './Icons';
-import { ALL_ITEMS } from '../data/inventory';
+import { fetchAllItems } from '../lib/inventory';
 import './InventoryPage.css';
 
 const CATEGORIES = [
@@ -13,16 +14,29 @@ const CATEGORIES = [
 ];
 
 export default function InventoryPage({ category, setCategory }) {
-  const items = ALL_ITEMS;
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    fetchAllItems()
+      .then((data) => active && setItems(data))
+      .catch((e) => active && setError(e))
+      .finally(() => active && setLoading(false));
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const selected = category || 'all';
 
   const chips = CATEGORIES.map((c) => ({
     ...c,
-    count: c.key === 'all' ? items.length : items.filter((i) => i._type === c.key).length,
+    count: c.key === 'all' ? items.length : items.filter((i) => i.type === c.key).length,
   }));
 
-  const visible = selected === 'all' ? items : items.filter((i) => i._type === selected);
+  const visible = selected === 'all' ? items : items.filter((i) => i.type === selected);
 
   return (
     <main className="inventory">
@@ -30,7 +44,19 @@ export default function InventoryPage({ category, setCategory }) {
         <FilterChips categories={chips} selected={selected} onSelect={setCategory} />
       </div>
 
-      {visible.length === 0 ? (
+      {loading ? (
+        <div className="inventory-empty">
+          <p>Loading the fleet…</p>
+        </div>
+      ) : error ? (
+        <div className="inventory-empty">
+          <SearchIcon className="inventory-empty-icon" />
+          <p>We couldn’t load the inventory. Please try again.</p>
+          <button className="inventory-empty-reset" onClick={() => window.location.reload()}>
+            Retry
+          </button>
+        </div>
+      ) : visible.length === 0 ? (
         <div className="inventory-empty">
           <SearchIcon className="inventory-empty-icon" />
           <p>Nothing in this category yet.</p>
@@ -41,7 +67,7 @@ export default function InventoryPage({ category, setCategory }) {
       ) : (
         <div className="inventory-grid">
           {visible.map((item) => (
-            <InventoryCard key={`${item._type}-${item.id}`} item={item} type={item._type} />
+            <InventoryCard key={item.id} item={item} type={item.type} />
           ))}
         </div>
       )}

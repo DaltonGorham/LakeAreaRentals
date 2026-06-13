@@ -9,7 +9,7 @@ import {
   GridIcon,
 } from './Icons';
 import { CATEGORY_META, getFeatures, getHighlights, getImages, CONTACT } from './specs';
-import { findItem } from '../data/inventory';
+import { fetchItem } from '../lib/inventory';
 import './VehicleDetailPage.css';
 
 function ContactCard({ label }) {
@@ -30,9 +30,22 @@ function ContactCard({ label }) {
 
 export default function VehicleDetailPage() {
   const { type, id } = useParams();
-  const item = findItem(type, id);
+  const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    fetchItem(id)
+      .then((data) => active && setItem(data))
+      .catch(() => active && setItem(null))
+      .finally(() => active && setLoading(false));
+    return () => {
+      active = false;
+    };
+  }, [id]);
 
   const images = item ? getImages(item) : [];
   const total = images.length;
@@ -65,6 +78,14 @@ export default function VehicleDetailPage() {
       document.body.style.overflow = prevOverflow;
     };
   }, [lightbox, multiple, next, prev]);
+
+  if (loading) {
+    return (
+      <main className="vehicle-detail vd-missing">
+        <p>Loading…</p>
+      </main>
+    );
+  }
 
   if (!item) {
     return (

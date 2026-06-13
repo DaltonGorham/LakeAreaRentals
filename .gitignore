@@ -12,6 +12,17 @@ dist
 dist-ssr
 *.local
 
+# Secrets — local Supabase keys
+.env
+.mcp.json
+
+# Agent skills lockfile
+skills-lock.json
+
+# Agent tooling
+.agents/
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

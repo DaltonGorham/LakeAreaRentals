@@ -26,38 +26,38 @@ export const CATEGORY_META = {
 const isMissing = (v) =>
   v === null || v === undefined || v === '' || v === 'N/A' || v === 'n/a';
 
-const mpg = (item) => {
-  if (!isMissing(item.mpg_city) && !isMissing(item.mpg_highway))
-    return `${item.mpg_city} / ${item.mpg_highway}`;
-  if (!isMissing(item.mpg_est)) return `~${item.mpg_est}`;
+const mpg = (specs) => {
+  if (!isMissing(specs.mpg_city) && !isMissing(specs.mpg_highway))
+    return `${specs.mpg_city} / ${specs.mpg_highway}`;
+  if (!isMissing(specs.mpg_est)) return `~${specs.mpg_est}`;
   return null;
 };
 
-// Short highlight line for cards — { Icon, text }.
+// Short highlight line for cards — { Icon, text }. Reads from item.specs.
 const HIGHLIGHT_BUILDERS = {
-  car: (item) => [
-    { Icon: SeatIcon, text: `${item.seats} seats` },
-    { Icon: FuelIcon, text: item.fuel_type },
-    mpg(item) && { Icon: GaugeIcon, text: `${mpg(item)} mpg` },
+  car: ({ specs }) => [
+    { Icon: SeatIcon, text: `${specs.seats} seats` },
+    { Icon: FuelIcon, text: specs.fuel_type },
+    mpg(specs) && { Icon: GaugeIcon, text: `${mpg(specs)} mpg` },
   ],
-  sxs: (item) => [
-    { Icon: SeatIcon, text: `${item.seats} seats` },
-    { Icon: FuelIcon, text: item.fuel_type },
-    !isMissing(item.horse_power) && { Icon: BoltIcon, text: `${item.horse_power} hp` },
+  sxs: ({ specs }) => [
+    { Icon: SeatIcon, text: `${specs.seats} seats` },
+    { Icon: FuelIcon, text: specs.fuel_type },
+    !isMissing(specs.horse_power) && { Icon: BoltIcon, text: `${specs.horse_power} hp` },
   ],
-  rv: (item) => [
-    { Icon: BedIcon, text: `Sleeps ${item.sleeps}` },
-    { Icon: FuelIcon, text: item.fuel_type },
-    mpg(item) && { Icon: GaugeIcon, text: `${mpg(item)} mpg` },
+  rv: ({ specs }) => [
+    { Icon: BedIcon, text: `Sleeps ${specs.sleeps}` },
+    { Icon: FuelIcon, text: specs.fuel_type },
+    mpg(specs) && { Icon: GaugeIcon, text: `${mpg(specs)} mpg` },
   ],
-  trailer: (item) => [
-    { Icon: RulerIcon, text: item.length },
-    { Icon: RampIcon, text: item.loading_ramps ? 'Ramps' : 'No ramps' },
+  trailer: ({ specs }) => [
+    { Icon: RulerIcon, text: specs.length },
+    { Icon: RampIcon, text: specs.loading_ramps ? 'Ramps' : 'No ramps' },
   ],
 };
 
 export function getFeatures(type, item) {
-  const features = Array.isArray(item.additional_features) ? item.additional_features : [];
+  const features = Array.isArray(item.features) ? item.features : [];
 
   return features
     .filter((text) => !isMissing(text))
@@ -72,7 +72,7 @@ export function getHighlights(type, item) {
 export const PLACEHOLDER_IMAGE = '/images/coming-soon.svg';
 
 export function getImages(item) {
-  const imgs = item.images && item.images.length ? item.images : [item.image].filter(Boolean);
+  const imgs = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
   return imgs.length ? imgs : [PLACEHOLDER_IMAGE];
 }
 

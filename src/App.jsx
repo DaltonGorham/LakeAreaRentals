@@ -7,6 +7,7 @@ import RentalAgreement from './components/RentalAgreement';
 import PolicyPage from './components/PolicyPage';
 import InventoryPage from './components/InventoryPage';
 import VehicleDetailPage from './components/VehicleDetailPage';
+import AdminPage from './components/AdminPage';
 import Footer from './components/Footer';
 import './App.css';
 import './components/Cards.css';
@@ -15,10 +16,11 @@ import './components/Header.css';
 function App() {
   const [category, setCategory] = useState('all');
   const location = useLocation();
+  const isAdmin = location.pathname === '/admin';
 
   return (
     <>
-      <Header />
+      {!isAdmin && <Header />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/inventory" element={<InventoryPage category={category} setCategory={setCategory} />} />
@@ -26,8 +28,9 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/rental-agreement" element={<RentalAgreement />} />
         <Route path="/privacy-policy" element={<PolicyPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      {location.pathname !== '/inventory' && <Footer />}
+      {!isAdmin && location.pathname !== '/inventory' && <Footer />}
     </>
   );
 }

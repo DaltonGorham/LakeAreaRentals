@@ -1,5 +1,5 @@
 import { CATEGORY_META, getHighlights, getImages } from './specs';
-import { vehicleHref } from '../data/inventory';
+import { vehicleHref } from '../lib/inventory';
 import './Cards.css';
 
 export default function InventoryCard({ item, type }) {
