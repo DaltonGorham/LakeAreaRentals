@@ -10,8 +10,6 @@ import VehicleDetailPage from './components/VehicleDetailPage';
 import AdminPage from './components/AdminPage';
 import Footer from './components/Footer';
 import './App.css';
-import './components/Cards.css';
-import './components/Header.css';
 
 function App() {
   const [category, setCategory] = useState('all');
