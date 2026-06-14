@@ -53,10 +53,6 @@ export default function Footer() {
             <br />
             <span className="text-rust-300">Rentals.</span>
           </h3>
-          <p className="mt-5 max-w-md text-paper/80 font-editorial text-lg leading-snug">
-            Family-run outfitter on the shores of Greers Ferry. Whatever brings you here — fishing,
-            hauling, cruising the campground — we'll set you up right.
-          </p>
         </div>
 
         {/* links */}
@@ -66,7 +62,7 @@ export default function Footer() {
           </h4>
           <ul className="space-y-2.5 font-body">
             {[
-              ["Fleet", "/inventory"],
+              ["Inventory", "/inventory"],
               ["About Us", "/about"],
               ["Rental Agreement", "/rental-agreement"],
               ["Privacy Policy", "/privacy-policy"],

@@ -53,7 +53,7 @@ export default function AboutPage() {
   const steps = [
     {
       title: "Find the right rental",
-      copy: "Browse the fleet and pick the car, RV, side-by-side, or trailer that fits your plans.",
+      copy: "Browse the inventory and pick the car, RV, side-by-side, or trailer that fits your plans.",
       image: categoryImages.car || PLACEHOLDER_IMAGE,
       tag: "step one",
     },
@@ -78,7 +78,7 @@ export default function AboutPage() {
         <div className="max-w-[1300px] mx-auto px-5 sm:px-10 pt-12 pb-20 lg:pt-20 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 relative z-10">
             <p className="reveal font-hand text-2xl sm:text-3xl text-rust-700 -rotate-2 inline-block mb-2">
-              about the shop —
+              about us —
             </p>
             <h1 className="reveal font-display text-[clamp(2.75rem,8vw,6rem)] leading-[0.95] uppercase tracking-tight">
               <span className="block text-forest-700">How rentals</span>
@@ -86,10 +86,7 @@ export default function AboutPage() {
             </h1>
             <p className="reveal mt-6 max-w-xl font-editorial italic text-xl sm:text-2xl leading-snug text-ink-soft">
               Browse what's available, call or email for current pricing, and turn in the rental
-              form before pickup —{" "}
-              <span className="not-italic font-medium text-forest-700">
-                that's the whole drill.
-              </span>
+              form before pickup
             </p>
             <div className="reveal mt-8 flex flex-wrap gap-4">
               <Link
@@ -155,7 +152,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {BENEFITS.map(({ icon, stamp, title, copy }, i) => (
+            {BENEFITS.map(({ icon, stamp, title }, i) => (
               <article
                 key={title}
                 className={`relative bg-cream p-7 sm:p-8 shadow-stamp-sm border-2 border-ink/10 ${
@@ -172,7 +169,6 @@ export default function AboutPage() {
                     <h3 className="font-display text-2xl text-forest-700 uppercase leading-tight">
                       {title}
                     </h3>
-                    <p className="mt-3 font-editorial text-ink-soft leading-relaxed">{copy}</p>
                   </div>
                 </div>
                 {icon}
@@ -226,7 +222,7 @@ export default function AboutPage() {
               />
             </svg>
 
-            {steps.map(({ title, copy, image, tag }, index) => (
+            {steps.map(({ title, image, tag }, index) => (
               <article
                 key={title}
                 className={`relative ${index === 1 ? "md:translate-y-6" : ""}`}
@@ -251,7 +247,6 @@ export default function AboutPage() {
                 <h3 className="mt-6 font-display text-2xl uppercase text-paper leading-tight">
                   {title}
                 </h3>
-                <p className="mt-2 font-editorial text-paper/85 leading-relaxed">{copy}</p>
               </article>
             ))}
           </div>

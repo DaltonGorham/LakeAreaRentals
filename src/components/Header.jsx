@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/inventory", label: "Fleet" },
+  { to: "/inventory", label: "Inventory" },
   { to: "/about", label: "About" },
 ];
 
@@ -19,7 +19,7 @@ export default function Header() {
           <span className="hidden sm:inline">Heber Springs · Rose Bud · Arkansas</span>
           <span className="flex items-center gap-2">
             <span className="inline-block size-1.5 rounded-full bg-sun animate-pulse" />
-            Open daily — summer hours
+            Open daily
           </span>
         </div>
       </div>
@@ -27,8 +27,20 @@ export default function Header() {
       <div className="max-w-[1300px] mx-auto px-5 sm:px-8 pt-5 pb-4 flex items-center justify-between gap-6">
         <Link to="/" className="group flex items-center gap-3">
           {/* hand-drawn badge */}
-          <span className="relative grid place-items-center size-12 sm:size-14 shrink-0 rounded-full bg-rust-500 text-paper font-display text-xl rotate-[-6deg] ring-4 ring-paper shadow-[0_4px_0_0_rgba(28,31,23,0.85)] transition-transform group-hover:rotate-[-2deg]">
-            LAR
+          <span className="relative grid place-items-center size-12 sm:size-14 shrink-0 rounded-full bg-rust-500 text-paper rotate-[-6deg] ring-4 ring-paper shadow-[0_4px_0_0_rgba(28,31,23,0.85)] transition-transform group-hover:rotate-[-2deg]">
+            <svg viewBox="0 0 40 40" className="w-6 sm:w-7 text-paper" aria-hidden>
+              <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <circle cx="20" cy="20" r="6" fill="currentColor" stroke="none" />
+                {Array.from({ length: 8 }).map((_, i) => {
+                  const a = (i * Math.PI) / 4;
+                  const x1 = 20 + Math.cos(a) * 10;
+                  const y1 = 20 + Math.sin(a) * 10;
+                  const x2 = 20 + Math.cos(a) * 16;
+                  const y2 = 20 + Math.sin(a) * 16;
+                  return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
+                })}
+              </g>
+            </svg>
             <span className="absolute -inset-1 rounded-full border border-dashed border-ink/40" />
           </span>
           <span className="flex flex-col leading-none">

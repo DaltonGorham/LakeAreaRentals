@@ -181,7 +181,7 @@ function LoginGate() {
           <span className="italic font-editorial text-ink">sign-in.</span>
         </h1>
         <p className="mt-3 font-editorial italic text-ink-soft text-sm">
-          Punch your code to manage the fleet.
+          Punch your code to manage the inventory.
         </p>
 
         <div className="mt-8">

@@ -48,10 +48,10 @@ export default function InventoryPage({ category, setCategory }) {
             </p>
             <h1 className="font-display text-[clamp(2.5rem,7vw,5rem)] uppercase leading-[0.95] tracking-tight">
               <span className="text-forest-700">The Full</span>{" "}
-              <span className="italic font-editorial text-ink">fleet.</span>
+              <span className="italic font-editorial text-ink">inventory.</span>
             </h1>
             <p className="mt-3 font-editorial italic text-ink-soft text-lg max-w-xl">
-              Filter by category. Click any ride to see the spec sheet — call us to lock it in.
+              Filter by category. Click any ride to see the spec sheet
             </p>
           </div>
           <div className="hidden sm:flex flex-col items-end gap-2">
@@ -103,10 +103,10 @@ export default function InventoryPage({ category, setCategory }) {
       {/* ===================================================== RESULTS GRID */}
       <section className="max-w-[1300px] mx-auto px-5 sm:px-10 pt-12">
         {loading ? (
-          <EmptyState title="Loading the fleet…" caption="Pulling specs off the lot." />
+          <EmptyState title="Loading the inventory…" caption="Pulling specs off the lot." />
         ) : error ? (
           <EmptyState
-            title="Couldn't load the fleet"
+            title="Couldn't load the inventory"
             caption="Something stalled. Try again in a moment."
             action={
               <button

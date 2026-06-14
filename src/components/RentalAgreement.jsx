@@ -4,7 +4,7 @@ import { CheckIcon, MailIcon, PhoneIcon } from "./Icons";
 const STEPS = [
   {
     title: "Download the form",
-    copy: "Tap the button to grab the rental agreement PDF — it's the only paperwork you'll need.",
+    copy: "Tap the button to grab the rental agreement PDF.",
   },
   {
     title: "Fill it out completely",
@@ -45,10 +45,7 @@ export default function RentalAgreement() {
             <span className="block italic font-editorial text-ink -mt-1">agreement.</span>
           </h1>
           <p className="reveal mt-5 max-w-2xl font-editorial italic text-xl sm:text-2xl leading-snug text-ink-soft">
-            Download it, fill it out, and email it back —{" "}
-            <span className="not-italic font-medium text-forest-700">
-              so your ride is ready to roll when you arrive.
-            </span>
+            Download it, fill it out, and email it back
           </p>
         </div>
       </section>
@@ -117,7 +114,7 @@ export default function RentalAgreement() {
             </h2>
 
             <ol className="mt-10 space-y-5">
-              {STEPS.map(({ title, copy }, i) => (
+              {STEPS.map(({ title }, i) => (
                 <li
                   key={title}
                   className={`relative bg-cream border-2 border-ink/15 p-6 sm:p-7 shadow-stamp-sm flex items-start gap-5 ${
@@ -134,7 +131,6 @@ export default function RentalAgreement() {
                     <h3 className="font-display text-xl sm:text-2xl uppercase text-forest-700 leading-tight">
                       {title}
                     </h3>
-                    <p className="mt-2 font-editorial text-ink-soft leading-relaxed">{copy}</p>
                   </div>
                 </li>
               ))}

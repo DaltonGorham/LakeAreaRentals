@@ -17,7 +17,6 @@ const CATEGORIES = [
     type: "car",
     stamp: "01",
     tag: "errands & weekend escapes",
-    copy: "Clean, comfortable rentals for grocery runs, road trips, and lake mornings.",
     icon: <CarIcon className={CAT_ICON_CLASS} />,
     rotate: "-rotate-2",
   },
@@ -26,7 +25,6 @@ const CATEGORIES = [
     type: "rv",
     stamp: "02",
     tag: "for the long haul",
-    copy: "Roomy motorhomes for family vacations and weeks-long stays on the water.",
     icon: <RvIcon className={CAT_ICON_CLASS} />,
     rotate: "rotate-1",
   },
@@ -35,7 +33,6 @@ const CATEGORIES = [
     type: "sxs",
     stamp: "03",
     tag: "cruise the campground",
-    copy: "Electric side-by-sides built for neighborhoods, lake roads, and cul-de-sacs.",
     icon: <SxsIcon className={CAT_ICON_CLASS} />,
     rotate: "-rotate-1",
   },
@@ -44,7 +41,6 @@ const CATEGORIES = [
     type: "trailer",
     stamp: "04",
     tag: "haul anything",
-    copy: "Utility trailers ready for projects, equipment, gravel, and big-box hauls.",
     icon: <TrailerIcon className={CAT_ICON_CLASS} />,
     rotate: "rotate-2",
   },
@@ -63,9 +59,8 @@ const MARQUEE = [
 
 const STATS = [
   { value: "2", label: "Local pickup points" },
-  { value: "30+", label: "Rides on the lot" },
   { value: "365", label: "Days a year on call" },
-  { value: "1", label: "Family running it" },
+  { value: "100%", label: "Locally run" },
 ];
 
 export default function LandingPage() {
@@ -140,10 +135,7 @@ export default function LandingPage() {
             </h1>
 
             <p className="reveal mt-7 max-w-xl font-editorial italic text-xl sm:text-2xl leading-snug text-ink-soft">
-              Cars, RVs, side-by-sides, and trailers —{" "}
-              <span className="not-italic font-medium text-forest-700">
-                for whatever brought you up here.
-              </span>
+              Cars, RVs, side-by-sides, and trailers
             </p>
 
             <div className="reveal mt-9 flex flex-wrap items-center gap-4">
@@ -151,7 +143,7 @@ export default function LandingPage() {
                 onClick={() => navigate("/inventory")}
                 className="group inline-flex items-center gap-3 bg-ink text-paper font-display uppercase tracking-[0.18em] text-sm px-7 py-4 rounded-[2px] shadow-stamp transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
               >
-                Browse the fleet
+                Browse the inventory
                 <span aria-hidden className="transition-transform group-hover:translate-x-1">
                   →
                 </span>
@@ -160,7 +152,7 @@ export default function LandingPage() {
                 href="tel:+15015550100"
                 className="inline-flex items-center gap-2 font-display uppercase tracking-[0.18em] text-sm text-forest-700 border-b-2 border-dashed border-forest-500 pb-1 hover:text-rust-700 hover:border-rust-500 transition-colors"
               >
-                or call the shop
+                or give us a call
               </a>
             </div>
 
@@ -185,20 +177,8 @@ export default function LandingPage() {
             </p>
           </div>
 
-          {/* RIGHT — polaroid stack & vintage badge */}
+          {/* RIGHT — polaroid stack */}
           <div className="lg:col-span-5 relative h-[460px] sm:h-[520px] hidden lg:block">
-            {/* vintage stamp badge */}
-            <div className="absolute -top-2 -right-4 rotate-12 z-30">
-              <div className="relative grid place-items-center size-44 rounded-full bg-rust-500 text-paper shadow-stamp">
-                <div className="absolute inset-2 rounded-full border-2 border-dashed border-paper/80" />
-                <div className="text-center leading-tight font-display">
-                  <p className="text-[0.6rem] tracking-[0.3em]">— EST. —</p>
-                  <p className="text-3xl my-1">A R</p>
-                  <p className="text-[0.6rem] tracking-[0.3em]">GREERS FERRY</p>
-                </div>
-              </div>
-            </div>
-
             {/* polaroid #1 */}
             <figure className="absolute top-8 left-2 w-60 -rotate-6 bg-cream p-3 pb-12 shadow-polaroid">
               <span className="tape left-1/2 -translate-x-1/2 -top-3" />
@@ -227,7 +207,7 @@ export default function LandingPage() {
                 />
               </div>
               <figcaption className="absolute bottom-2 left-0 right-0 text-center font-hand text-xl text-ink">
-                sxs ⚡
+                sxs no. 03
               </figcaption>
             </figure>
 
@@ -261,7 +241,7 @@ export default function LandingPage() {
             <div className="aspect-[4/5] bg-forest-300 overflow-hidden">
               <img src={categoryImages["sxs"] || PLACEHOLDER_IMAGE} alt="" className="w-full h-full object-cover" />
             </div>
-            <figcaption className="absolute bottom-1.5 left-0 right-0 text-center font-hand text-lg">sxs ⚡</figcaption>
+            <figcaption className="absolute bottom-1.5 left-0 right-0 text-center font-hand text-lg">sxs no. 03</figcaption>
           </figure>
         </div>
       </section>
@@ -275,13 +255,22 @@ export default function LandingPage() {
               className="inline-flex items-center gap-6 px-6 font-display text-lg tracking-[0.2em] uppercase"
             >
               {item}
-              <span className="text-ochre-500 text-2xl leading-none">✦</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="w-4 h-4 text-ochre-500 shrink-0"
+              >
+                <path
+                  d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"
+                  fill="currentColor"
+                />
+              </svg>
             </span>
           ))}
         </div>
       </div>
 
-      {/* ================================================================ FLEET */}
+      {/* ============================================================ INVENTORY */}
       <section className="paper-grain relative py-24">
         <div className="max-w-[1300px] mx-auto px-5 sm:px-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
@@ -305,7 +294,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6">
-            {CATEGORIES.map(({ label, type, stamp, tag, copy, icon, rotate }, i) => (
+            {CATEGORIES.map(({ label, type, stamp, tag, icon, rotate }, i) => (
               <button
                 key={label}
                 onClick={() => navigate("/inventory")}
@@ -336,7 +325,6 @@ export default function LandingPage() {
                     <p className="font-editorial italic text-sm text-ink-soft mt-1">{tag}</p>
                   </figcaption>
                 </div>
-                <p className="mt-4 px-1 text-sm text-ink-soft leading-relaxed font-body">{copy}</p>
               </button>
             ))}
           </div>
@@ -365,11 +353,11 @@ export default function LandingPage() {
           ))}
         </svg>
 
-        <div className="relative max-w-[1300px] mx-auto px-5 sm:px-10 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+        <div className="relative max-w-3xl mx-auto px-5 sm:px-10 grid grid-cols-1 sm:grid-cols-3 gap-y-10 gap-x-10 text-center">
           {STATS.map(({ value, label }) => (
-            <div key={label} className="text-center sm:text-left">
+            <div key={label}>
               <p className="font-display text-6xl sm:text-7xl text-ochre-300 leading-none">{value}</p>
-              <p className="mt-3 font-editorial italic text-paper/85 max-w-[14ch] mx-auto sm:mx-0">
+              <p className="mt-3 font-editorial italic text-paper/85 max-w-[14ch] mx-auto">
                 {label}
               </p>
             </div>
@@ -484,13 +472,13 @@ export default function LandingPage() {
                   onClick={() => navigate("/inventory")}
                   className="bg-ink text-paper font-display uppercase tracking-[0.18em] text-sm px-6 py-4 rounded-[2px] shadow-stamp-sm hover:-translate-y-0.5 transition-transform"
                 >
-                  See the fleet →
+                  See the inventory →
                 </button>
                 <a
                   href="tel:+15015550100"
                   className="text-center bg-paper text-ink font-display uppercase tracking-[0.18em] text-sm px-6 py-4 rounded-[2px] shadow-stamp-sm hover:-translate-y-0.5 transition-transform"
                 >
-                  Call the shop
+                  Give us a call
                 </a>
               </div>
             </div>
