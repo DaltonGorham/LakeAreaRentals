@@ -1,70 +1,143 @@
-:root {
-  /* Backgrounds — white dominant */
-  --color-bg-start: #ffffff;
-  --color-bg-mid: #f8f8f8;
-  --color-bg-end: #f0f0f0;
-  --color-bg-gradient: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-mid) 50%, var(--color-bg-end) 100%);
+@import "tailwindcss";
 
-  /* Glass surfaces (subtle on white bg) */
-  --color-surface: rgba(0, 0, 0, 0.03);
-  --color-surface-strong: rgba(0, 0, 0, 0.06);
-  --color-surface-border: rgba(0, 0, 0, 0.1);
+/* ============================================================
+   Lake Area Rentals — Retro Lake / Vintage Americana
+   Sun-faded paper, forest pines, rust orange, lake teal, ochre
+   ============================================================ */
 
-  /* Light surfaces (for modals / feature cards) */
-  --color-surface-light: #ffffff;
-  --color-surface-light-alt: #fafafa;
+@theme {
+  --color-paper: #f1e4c3;
+  --color-paper-warm: #ead9b0;
+  --color-paper-shade: #d8c598;
+  --color-cream: #faf3df;
+  --color-ink: #1c1f17;
+  --color-ink-soft: #3b3f33;
 
-  /* Primary — neutral black theme */
-  --color-primary: #1a1a1a;
-  --color-primary-hover: #000000;
-  --color-primary-gradient: linear-gradient(45deg, var(--color-primary), var(--color-primary-hover));
-  --color-primary-soft: rgba(0, 0, 0, 0.16);
-  --color-on-primary: #ffffff;
+  --color-forest-50: #e4ead7;
+  --color-forest-300: #6b8a4a;
+  --color-forest-500: #355c2b;
+  --color-forest-700: #224018;
+  --color-forest-900: #142a0e;
 
-  /* Accent — charcoal */
-  --color-accent: #2b2b2b;
-  --color-accent-hover: #000000;
-  --color-accent-gradient: linear-gradient(45deg, var(--color-accent), var(--color-accent-hover));
-  --color-accent-soft: rgba(0, 0, 0, 0.14);
-  --color-on-accent: #ffffff;
+  --color-rust-300: #e88a5f;
+  --color-rust-500: #c14a26;
+  --color-rust-700: #8a2f15;
+  --color-rust-900: #5b1c0a;
 
-  /* Text on white bg (dark text is primary now) */
-  --color-text: #1a1a1a;
-  --color-text-muted: #4a4a4a;
-  --color-text-subtle: #6b6b6b;
-  --color-text-eyebrow: #737373;
+  --color-lake-300: #9bb9c2;
+  --color-lake-500: #4f7d8c;
+  --color-lake-700: #305867;
+  --color-lake-900: #1d3a47;
 
-  /* Text on light surfaces */
-  --color-text-dark: #1a1a1a;
-  --color-text-dark-muted: #4a4a4a;
+  --color-ochre-300: #f0c779;
+  --color-ochre-500: #d9a23a;
+  --color-ochre-700: #a87a1f;
+  --color-ochre-900: #6c4d0e;
 
-  /* Misc */
-  --color-danger: #b00020;
-  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-sun: #f0b740;
 
-  /* Typography */
-  --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: "Alfa Slab One", serif;
+  --font-editorial: "Fraunces", serif;
+  --font-hand: "Caveat", cursive;
+  --font-body: "Sora", system-ui, sans-serif;
 
-  /* Radius scale */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 22px;
-  --radius-pill: 999px;
+  --shadow-stamp: 4px 4px 0 0 rgb(28 31 23 / 0.95);
+  --shadow-stamp-sm: 2px 2px 0 0 rgb(28 31 23 / 0.95);
+  --shadow-polaroid: 0 18px 30px -12px rgb(28 31 23 / 0.35), 0 6px 14px -8px rgb(28 31 23 / 0.25);
+}
 
-  /* Shadow scale */
-  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
-  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08), 0 2px 4px rgba(16, 24, 40, 0.04);
-  --shadow-lg: 0 18px 40px rgba(16, 24, 40, 0.14), 0 6px 14px rgba(16, 24, 40, 0.08);
-  --shadow-xl: 0 32px 70px rgba(16, 24, 40, 0.22), 0 12px 28px rgba(16, 24, 40, 0.12);
+/* paper grain & body baseline */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f1e4c3;
+  color: #1c1f17;
+  font-family: "Sora", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-  /* Per-category accent colors (badges, spec icons) */
-  --cat-car: #1a1a1a;
-  --cat-car-soft: rgba(0, 0, 0, 0.1);
-  --cat-sxs: #525252;
-  --cat-sxs-soft: rgba(82, 82, 82, 0.12);
-  --cat-rv: #3f3f46;
-  --cat-rv-soft: rgba(63, 63, 70, 0.12);
-  --cat-trailer: #44403c;
-  --cat-trailer-soft: rgba(68, 64, 60, 0.12);
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Paper texture overlay — subtle warm grain you can apply to any container */
+.paper-grain {
+  position: relative;
+  isolation: isolate;
+}
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(138, 90, 30, 0.08) 0, transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(48, 88, 103, 0.08) 0, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.35) 0, transparent 60%);
+}
+.paper-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.35  0 0 0 0 0.2  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.35'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Hand-stippled offset shadow (vintage poster) */
+.poster-shadow {
+  text-shadow:
+    2px 2px 0 #c14a26,
+    4px 4px 0 #355c2b;
+}
+
+/* Ticker animation */
+@keyframes lar-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.animate-marquee {
+  animation: lar-marquee 40s linear infinite;
+}
+
+/* Slow drift animation for clouds / ripples */
+@keyframes lar-drift {
+  0%   { transform: translateX(-8%); }
+  50%  { transform: translateX(8%); }
+  100% { transform: translateX(-8%); }
+}
+.animate-drift {
+  animation: lar-drift 22s ease-in-out infinite;
+}
+
+/* Subtle bob — for the lakeside dock motif */
+@keyframes lar-bob {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50%      { transform: translateY(-6px) rotate(1deg); }
+}
+.animate-bob { animation: lar-bob 6s ease-in-out infinite; }
+
+/* Staggered fade-up reveal */
+@keyframes lar-reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: lar-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* tape strip for polaroids */
+.tape {
+  position: absolute;
+  width: 90px;
+  height: 22px;
+  background: rgba(217, 162, 58, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(1px);
+  rotate: -4deg;
 }
