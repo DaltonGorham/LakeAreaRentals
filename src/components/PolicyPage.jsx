@@ -107,14 +107,11 @@ export default function PolicyPage() {
       {/* ============================================================== HERO */}
       <section className="paper-grain relative">
         <div className="max-w-[1300px] mx-auto px-5 sm:px-10 pt-12 pb-10 lg:pt-20">
-          <p className="font-hand text-2xl sm:text-3xl text-rust-700 -rotate-2 inline-block mb-2">
-            the fine print —
-          </p>
           <h1 className="font-display text-[clamp(2.75rem,8vw,6rem)] leading-[0.95] uppercase tracking-tight">
             <span className="block text-forest-700">Privacy</span>
-            <span className="block italic font-editorial text-ink -mt-1">policy.</span>
+            <span className="block italic font-editorial text-ink -mt-1">policy</span>
           </h1>
-          <div className="mt-5 inline-flex items-center gap-3 bg-cream border-2 border-dashed border-ink/30 px-4 py-2 shadow-stamp-sm -rotate-1">
+          <div className="mt-5 inline-flex items-center gap-3 bg-cream border-2 border-ink/15 rounded-[2px] px-4 py-2">
             <span className="inline-block size-2 rounded-full bg-rust-500" />
             <span className="font-display text-xs uppercase tracking-[0.2em] text-ink-soft">
               Last updated · {LAST_UPDATED}
@@ -126,11 +123,10 @@ export default function PolicyPage() {
       {/* ============================================================ CONTENT */}
       <section className="paper-grain py-10">
         <div className="max-w-[1300px] mx-auto px-5 sm:px-10 grid lg:grid-cols-12 gap-10">
-          {/* Sidebar — vintage TOC */}
+          {/* Sidebar — TOC */}
           <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-8 bg-cream border-2 border-ink/15 p-6 shadow-stamp-sm -rotate-[0.4deg]">
-              <p className="font-hand text-2xl text-rust-700 leading-none">contents —</p>
-              <h2 className="mt-1 font-display text-xl uppercase text-forest-700 tracking-wide">
+            <div className="lg:sticky lg:top-8 bg-cream border-2 border-ink/15 rounded-md p-6">
+              <h2 className="font-display text-xl uppercase text-forest-700 tracking-wide">
                 On this page
               </h2>
               <nav className="mt-5 flex flex-col gap-1">
@@ -138,7 +134,7 @@ export default function PolicyPage() {
                   <a
                     key={s.id}
                     href={`#${s.id}`}
-                    className="group flex items-baseline gap-3 py-2 border-b border-dashed border-ink/15 last:border-0 font-editorial text-ink-soft hover:text-rust-700 transition-colors"
+                    className="group flex items-baseline gap-3 py-2 border-b border-ink/15 last:border-0 font-editorial text-ink-soft hover:text-rust-700 transition-colors"
                   >
                     <span className="font-display text-xs text-ochre-700 tracking-wider w-6 shrink-0">
                       {String(i + 1).padStart(2, "0")}
@@ -158,7 +154,7 @@ export default function PolicyPage() {
 
           {/* Main content */}
           <article className="lg:col-span-8">
-            <div className="bg-cream border-2 border-ink/15 p-7 sm:p-10 shadow-stamp">
+            <div className="bg-cream border-2 border-ink/15 rounded-md p-7 sm:p-10">
               <p className="font-editorial italic text-lg leading-relaxed text-ink-soft border-l-4 border-rust-500 pl-5">
                 Lake Area Rentals LLC ("we," "us," or "our") respects your privacy. This Privacy
                 Policy explains what information we collect when you visit our website or contact

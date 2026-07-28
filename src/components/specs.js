@@ -76,6 +76,16 @@ export function getImages(item) {
   return imgs.length ? imgs : [PLACEHOLDER_IMAGE];
 }
 
+// Formats a 'YYYY-MM-DD' date string as e.g. "Aug 3".
+export function formatShortDate(dateStr) {
+  if (!dateStr) return '';
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+  });
+}
+
 export const CONTACT = {
   phone: '501-250-6398',
   phoneHref: 'tel:501-250-6398',

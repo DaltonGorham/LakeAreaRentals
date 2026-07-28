@@ -20,6 +20,8 @@ import {
   LuX,
   LuSearch,
   LuCheck,
+  LuFileText,
+  LuMenu,
 } from 'react-icons/lu';
 import { TbEngine } from 'react-icons/tb';
 import { GiJeep } from 'react-icons/gi';
@@ -47,4 +49,6 @@ export {
   LuX as CloseIcon,
   LuSearch as SearchIcon,
   LuCheck as CheckIcon,
+  LuFileText as FileIcon,
+  LuMenu as MenuIcon,
 };

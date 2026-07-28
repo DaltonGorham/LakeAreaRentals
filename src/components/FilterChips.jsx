@@ -28,7 +28,7 @@ export default function FilterChips({ categories, selected, onSelect }) {
             className={[
               'inline-flex items-center gap-2 px-4 py-2 font-display text-xs sm:text-sm uppercase tracking-[0.18em] rounded-[2px] transition-all',
               active
-                ? 'bg-ink text-paper shadow-stamp-sm -rotate-[1deg]'
+                ? 'bg-ink text-paper'
                 : 'bg-cream text-ink border-2 border-ink/15 hover:border-rust-500 hover:text-rust-700',
             ].join(' ')}
           >

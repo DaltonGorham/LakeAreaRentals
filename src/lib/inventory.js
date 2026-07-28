@@ -40,6 +40,12 @@ export async function fetchCategoryImages() {
     const img = Array.isArray(item.images) ? item.images.find(Boolean) : null;
     if (img) byType[item.type] = img;
   }
+
+  // Pin the car card to the Trax for now, regardless of which car sorts first.
+  const trax = items.find((i) => i.type === 'car' && i.name.includes('Trax'));
+  const traxImg = trax?.images?.find(Boolean);
+  if (traxImg) byType.car = traxImg;
+
   return byType;
 }
 
