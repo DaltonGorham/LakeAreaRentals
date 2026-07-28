@@ -41,7 +41,16 @@ export default function Turnstile({ onVerify, onExpire }) {
           sitekey: SITE_KEY,
           callback: onVerify,
           'expired-callback': onExpire,
-          'error-callback': () => setError(true),
+          // Turnstile errors are often transient (network blip, brief rate limit) —
+          // reset the existing widget so it retries automatically instead of
+          // dead-ending the whole form until the user refreshes the page.
+          'error-callback': () => {
+            if (widgetIdRef.current != null && window.turnstile) {
+              window.turnstile.reset(widgetIdRef.current);
+            } else {
+              setError(true);
+            }
+          },
         });
       })
       .catch(() => setError(true));
