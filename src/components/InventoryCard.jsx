@@ -1,7 +1,7 @@
-import { CATEGORY_META, getHighlights, getImages, formatShortDate } from './specs';
+import { CATEGORY_META, getHighlights, getImages } from './specs';
 import { vehicleHref } from '../lib/inventory';
 
-export default function InventoryCard({ item, type, availability }) {
+export default function InventoryCard({ item, type }) {
   const meta = CATEGORY_META[type] || {};
   const images = getImages(item);
   const highlights = getHighlights(type, item);
@@ -27,22 +27,6 @@ export default function InventoryCard({ item, type, availability }) {
             <span className="absolute top-2 left-2 inline-flex items-center gap-1.5 bg-paper/95 text-ink font-display text-[0.65rem] uppercase tracking-[0.2em] px-2.5 py-1 border-2 border-ink rounded-[2px]">
               <Icon className="text-sm" />
               {meta.label}
-            </span>
-          )}
-          {/* availability stamp */}
-          {availability && (
-            <span
-              className={`absolute top-2 right-2 inline-flex items-center gap-1.5 font-display text-[0.65rem] uppercase tracking-[0.2em] px-2.5 py-1 border-2 rounded-[2px] ${
-                availability.available
-                  ? 'bg-forest-700/95 text-paper border-forest-700'
-                  : 'bg-rust-500/95 text-paper border-rust-500'
-              }`}
-            >
-              {availability.available
-                ? 'Available'
-                : availability.returnDate
-                ? `Back ${formatShortDate(availability.returnDate)}`
-                : 'Rented'}
             </span>
           )}
           {/* view cue */}

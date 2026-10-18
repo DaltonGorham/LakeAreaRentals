@@ -8,36 +8,11 @@ import {
   CloseIcon,
   GridIcon,
 } from './Icons';
-import { CATEGORY_META, getFeatures, getHighlights, getImages, formatShortDate, CONTACT } from './specs';
+import { CATEGORY_META, getFeatures, getHighlights, getImages, CONTACT } from './specs';
 import { fetchItem } from '../lib/inventory';
-import { fetchApprovedWindowsForItem, getAvailability } from '../lib/rentals';
 import BookingForm from './BookingForm';
 
-function AvailabilityBanner({ availability }) {
-  if (!availability) return null;
-  return (
-    <div
-      className={`flex items-center gap-2.5 px-4 py-3 mb-5 border-2 rounded-[2px] font-display text-sm uppercase tracking-[0.15em] ${
-        availability.available
-          ? 'bg-forest-700/10 border-forest-700/40 text-forest-700'
-          : 'bg-rust-500/10 border-rust-500/40 text-rust-700'
-      }`}
-    >
-      <span
-        className={`inline-block size-2.5 rounded-full ${
-          availability.available ? 'bg-forest-700' : 'bg-rust-500'
-        }`}
-      />
-      {availability.available
-        ? 'Available now'
-        : availability.returnDate
-        ? `Currently rented — back ${formatShortDate(availability.returnDate)}`
-        : 'Currently rented — return date pending'}
-    </div>
-  );
-}
-
-function ContactCard({ label, availability }) {
+function ContactCard({ label }) {
   return (
     <div className="relative bg-cream border-2 border-ink/15 rounded-md shadow-card p-6 sm:p-7">
       <h2 className="font-display text-2xl sm:text-3xl uppercase text-forest-700 leading-[0.95]">
@@ -46,10 +21,7 @@ function ContactCard({ label, availability }) {
         <span className="italic font-editorial text-ink">{label || 'rental'}</span>
       </h2>
 
-      <div className="mt-4">
-        <AvailabilityBanner availability={availability} />
-      </div>
-      <p className="font-editorial italic text-ink-soft leading-snug">
+      <p className="mt-4 font-editorial italic text-ink-soft leading-snug">
         Pick your dates below, or reach out directly for pricing and details.
       </p>
 
@@ -84,7 +56,6 @@ function ContactCard({ label, availability }) {
 export default function VehicleDetailPage() {
   const { type, id } = useParams();
   const [item, setItem] = useState(null);
-  const [rentals, setRentals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const [lightbox, setLightbox] = useState(false);
@@ -92,20 +63,14 @@ export default function VehicleDetailPage() {
   useEffect(() => {
     let active = true;
     setLoading(true);
-    Promise.all([fetchItem(id), fetchApprovedWindowsForItem(id)])
-      .then(([itemData, rentalsData]) => {
-        if (!active) return;
-        setItem(itemData);
-        setRentals(rentalsData);
-      })
+    fetchItem(id)
+      .then((itemData) => active && setItem(itemData))
       .catch(() => active && setItem(null))
       .finally(() => active && setLoading(false));
     return () => {
       active = false;
     };
   }, [id]);
-
-  const availability = item ? getAvailability(rentals) : null;
 
   const images = item ? getImages(item) : [];
   const total = images.length;
@@ -260,7 +225,7 @@ export default function VehicleDetailPage() {
 
           {/* Mobile contact (sidebar appears on lg+) */}
           <div className="lg:hidden">
-            <ContactCard label={meta.label} availability={availability} />
+            <ContactCard label={meta.label} />
           </div>
 
           {/* Features */}
@@ -289,7 +254,7 @@ export default function VehicleDetailPage() {
 
         {/* RIGHT — contact */}
         <aside className="hidden lg:block lg:col-span-4">
-          <ContactCard label={meta.label} availability={availability} />
+          <ContactCard label={meta.label} />
         </aside>
       </div>
 

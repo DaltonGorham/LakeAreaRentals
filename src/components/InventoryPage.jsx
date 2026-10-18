@@ -3,7 +3,6 @@ import FilterChips from './FilterChips';
 import InventoryCard from './InventoryCard';
 import { SearchIcon } from './Icons';
 import { fetchAllItems } from '../lib/inventory';
-import { fetchCurrentAndUpcomingRentals, getAvailability } from '../lib/rentals';
 
 const CATEGORIES = [
   { key: 'all', label: 'All' },
@@ -15,18 +14,13 @@ const CATEGORIES = [
 
 export default function InventoryPage({ category, setCategory }) {
   const [items, setItems] = useState([]);
-  const [rentalsByItem, setRentalsByItem] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     let active = true;
-    Promise.all([fetchAllItems(), fetchCurrentAndUpcomingRentals()])
-      .then(([itemsData, rentalsData]) => {
-        if (!active) return;
-        setItems(itemsData);
-        setRentalsByItem(rentalsData);
-      })
+    fetchAllItems()
+      .then((itemsData) => active && setItems(itemsData))
       .catch((e) => active && setError(e))
       .finally(() => active && setLoading(false));
     return () => {
@@ -111,12 +105,7 @@ export default function InventoryPage({ category, setCategory }) {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-6">
               {visible.map((item) => (
-                <InventoryCard
-                  key={item.id}
-                  item={item}
-                  type={item.type}
-                  availability={getAvailability(rentalsByItem[item.id])}
-                />
+                <InventoryCard key={item.id} item={item} type={item.type} />
               ))}
             </div>
           </>
