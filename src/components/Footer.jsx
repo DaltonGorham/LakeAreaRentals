@@ -6,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-24 bg-forest-900 text-paper overflow-hidden">
-      <div className="relative max-w-[1300px] mx-auto px-6 sm:px-10 pt-16 pb-12 grid gap-12 md:grid-cols-12">
+      <div className="relative max-w-[1300px] mx-auto px-6 sm:px-10 pt-16 pb-12 grid gap-12 md:grid-cols-12 text-center md:text-left">
         {/* brand block */}
         <div className="md:col-span-5">
           <h3 className="font-display text-4xl sm:text-5xl leading-[1] text-paper">
@@ -46,7 +46,7 @@ export default function Footer() {
           <h4 className="font-display text-sm tracking-[0.3em] uppercase text-ochre-300 mb-4">
             Open Hours
           </h4>
-          <div className="relative rounded-[3px] bg-forest-700/60 ring-1 ring-paper/15 p-5 font-editorial">
+          <div className="relative w-full max-w-xs mx-auto md:max-w-none rounded-[3px] bg-forest-700/60 ring-1 ring-paper/15 p-5 font-editorial">
             {[
               ["Mon – Fri", "8 AM – 6 PM"],
               ["Saturday", "9 AM – 6 PM"],
@@ -67,7 +67,7 @@ export default function Footer() {
       {/* bottom stripe */}
       <div className="relative border-t border-paper/15">
         <div className="max-w-[1300px] mx-auto px-6 sm:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-paper/70 text-sm">
-          <p className="font-body">
+          <p className="font-body text-center sm:text-left">
             © {year} Lake Area Rentals LLC · Heber Springs &amp; Rose Bud, AR
           </p>
           <button

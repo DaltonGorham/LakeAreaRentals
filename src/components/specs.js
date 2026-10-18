@@ -76,6 +76,16 @@ export function getImages(item) {
   return imgs.length ? imgs : [PLACEHOLDER_IMAGE];
 }
 
+// Uploaded photos are full-size phone shots (3–9 MB). Supabase Storage can resize
+// on the fly; `contain` inside a square box keeps the whole frame, longest side ≤ size.
+export function sizedImage(src, size) {
+  const marker = '/storage/v1/object/public/';
+  if (!src || !src.includes(marker)) return src;
+  const url = src.replace(marker, '/storage/v1/render/image/public/');
+  const sep = url.includes('?') ? '&' : '?';
+  return `${url}${sep}width=${size}&height=${size}&resize=contain&quality=75`;
+}
+
 // Formats a 'YYYY-MM-DD' date string as e.g. "Aug 3".
 export function formatShortDate(dateStr) {
   if (!dateStr) return '';

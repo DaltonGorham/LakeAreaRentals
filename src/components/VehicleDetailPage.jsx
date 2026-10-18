@@ -8,7 +8,8 @@ import {
   CloseIcon,
   GridIcon,
 } from './Icons';
-import { CATEGORY_META, getFeatures, getHighlights, getImages, CONTACT } from './specs';
+import { CATEGORY_META, getFeatures, getHighlights, getImages, sizedImage, CONTACT } from './specs';
+import VehiclePhoto from './VehiclePhoto';
 import { fetchItem } from '../lib/inventory';
 import BookingForm from './BookingForm';
 
@@ -177,11 +178,12 @@ export default function VehicleDetailPage() {
                   total >= 3 && i === 0 ? 'row-span-2 col-span-2' : ''
                 } ${total === 1 ? 'aspect-[16/10]' : 'aspect-[4/3]'}`}
               >
-                <img
+                <VehiclePhoto
                   src={src}
                   alt={`${item.name} — image ${i + 1}`}
+                  size={i === 0 ? 1600 : 800}
                   loading={i === 0 ? 'eager' : 'lazy'}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full"
                 />
               </button>
             ))}
@@ -285,7 +287,7 @@ export default function VehicleDetailPage() {
             className="relative max-w-[min(1100px,95vw)] max-h-[88vh] bg-cream p-3 rounded-md shadow-card"
           >
             <img
-              src={images[index]}
+              src={sizedImage(images[index], 2000)}
               alt={`${item.name} — image ${index + 1} of ${total}`}
               className="block max-w-full max-h-[80vh] object-contain"
             />

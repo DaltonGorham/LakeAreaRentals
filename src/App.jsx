@@ -28,7 +28,7 @@ function App() {
         <Route path="/privacy-policy" element={<PolicyPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      {!isAdmin && location.pathname !== '/inventory' && <Footer />}
+      {!isAdmin && <Footer />}
     </>
   );
 }

@@ -14,7 +14,7 @@ import {
 import { signIn, signOut, getSession, onAuthChange } from '../lib/auth';
 import { fetchAllItems, createItem, updateItem, deleteItem } from '../lib/inventory';
 import { uploadImages, deleteImagesByUrl, getAgreementSignedUrl } from '../lib/storage';
-import { getImages, formatShortDate } from './specs';
+import { getImages, sizedImage, formatShortDate } from './specs';
 import {
   fetchOutstandingRentals,
   fetchRentalsForItem,
@@ -298,8 +298,9 @@ function ItemForm({ item, onSaved, onCancel }) {
 
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label className={LABEL_CLASS}>Type</label>
+          <label htmlFor="item-type" className={LABEL_CLASS}>Type</label>
           <select
+            id="item-type"
             value={form.type}
             onChange={(e) => changeType(e.target.value)}
             className={INPUT_CLASS}
@@ -312,8 +313,9 @@ function ItemForm({ item, onSaved, onCancel }) {
           </select>
         </div>
         <div>
-          <label className={LABEL_CLASS}>Category label</label>
+          <label htmlFor="item-category" className={LABEL_CLASS}>Category label</label>
           <input
+            id="item-category"
             value={form.category}
             onChange={(e) => set('category', e.target.value)}
             className={INPUT_CLASS}
@@ -322,8 +324,9 @@ function ItemForm({ item, onSaved, onCancel }) {
       </div>
 
       <div className="mt-5">
-        <label className={LABEL_CLASS}>Name</label>
+        <label htmlFor="item-name" className={LABEL_CLASS}>Name</label>
         <input
+          id="item-name"
           value={form.name}
           onChange={(e) => set('name', e.target.value)}
           className={INPUT_CLASS}
@@ -332,7 +335,7 @@ function ItemForm({ item, onSaved, onCancel }) {
 
       <fieldset className="mt-8 border-2 border-ink/20 rounded-md p-5 sm:p-6 relative">
         <legend className="px-3 font-display text-[0.7rem] uppercase tracking-[0.3em] text-rust-700">
-          § Specs
+          Specs
         </legend>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SPEC_FIELDS[form.type].map((f) =>
@@ -351,8 +354,9 @@ function ItemForm({ item, onSaved, onCancel }) {
               </label>
             ) : (
               <div key={f.key}>
-                <label className={LABEL_CLASS}>{f.label}</label>
+                <label htmlFor={`spec-${f.key}`} className={LABEL_CLASS}>{f.label}</label>
                 <input
+                  id={`spec-${f.key}`}
                   type={f.type}
                   value={form.specs[f.key] ?? ''}
                   onChange={(e) => setSpec(f.key, e.target.value)}
@@ -365,37 +369,38 @@ function ItemForm({ item, onSaved, onCancel }) {
       </fieldset>
 
       <div className="mt-8">
-        <label className={LABEL_CLASS}>Images</label>
+        <p className={LABEL_CLASS}>Images</p>
+        <p className="-mt-0.5 mb-2 font-editorial italic text-sm text-ink-soft">
+          The first photo is the cover shown on the inventory page.
+        </p>
         {(form.images.length > 0 || form.newFiles.length > 0) && (
           <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 gap-3 mb-3">
-            {form.images.map((url) => (
-              <div key={url} className="relative group bg-paper rounded-md overflow-hidden shadow-card">
-                <div className="aspect-square overflow-hidden bg-paper-shade">
-                  <img src={url} alt="" className="w-full h-full object-cover" />
+            {[
+              ...form.images.map((url) => ({ key: url, src: sizedImage(url, 400), isNew: false, remove: () => removeExisting(url) })),
+              ...form.newFiles.map((n, i) => ({ key: n.preview, src: n.preview, isNew: true, remove: () => removeNew(i) })),
+            ].map((img, i) => (
+              <div key={img.key} className="relative bg-paper rounded-md overflow-hidden shadow-card">
+                <div className="aspect-[4/3] overflow-hidden bg-paper-shade">
+                  <img src={img.src} alt="" loading="lazy" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute top-1.5 left-1.5 flex gap-1">
+                  {i === 0 && (
+                    <span className="bg-forest-700 text-paper font-display text-[0.55rem] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded-[2px]">
+                      Cover
+                    </span>
+                  )}
+                  {img.isNew && (
+                    <span className="bg-ochre-500 text-ink font-display text-[0.55rem] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded-[2px]">
+                      New
+                    </span>
+                  )}
                 </div>
                 <button
                   type="button"
-                  onClick={() => removeExisting(url)}
+                  onClick={img.remove}
                   aria-label="Remove image"
-                  className="absolute top-1 right-1 grid place-items-center size-6 rounded-full bg-ink text-paper text-sm font-display hover:bg-rust-500 transition-colors"
-                >
-                  <FiX />
-                </button>
-              </div>
-            ))}
-            {form.newFiles.map((n, i) => (
-              <div key={n.preview} className="relative group bg-paper rounded-md overflow-hidden shadow-card">
-                <span className="absolute top-1 left-1 z-10 bg-ochre-500 text-ink font-display text-[0.55rem] uppercase tracking-[0.2em] px-1.5 py-0.5 rounded-[2px]">
-                  NEW
-                </span>
-                <div className="aspect-square overflow-hidden bg-paper-shade">
-                  <img src={n.preview} alt="" className="w-full h-full object-cover" />
-                </div>
-                <button
-                  type="button"
-                  onClick={() => removeNew(i)}
-                  aria-label="Remove image"
-                  className="absolute top-1 right-1 grid place-items-center size-6 rounded-full bg-ink text-paper text-sm font-display hover:bg-rust-500 transition-colors"
+                  title="Remove image"
+                  className="absolute top-1.5 right-1.5 grid place-items-center size-8 rounded-full bg-ink/85 text-paper hover:bg-rust-500 transition-colors"
                 >
                   <FiX />
                 </button>
@@ -420,8 +425,9 @@ function ItemForm({ item, onSaved, onCancel }) {
       </div>
 
       <div className="mt-8">
-        <label className={LABEL_CLASS}>Features — one per line</label>
+        <label htmlFor="item-features" className={LABEL_CLASS}>Features — one per line</label>
         <textarea
+          id="item-features"
           rows={6}
           value={form.featuresText}
           onChange={(e) => set('featuresText', e.target.value)}
@@ -450,7 +456,7 @@ function ItemForm({ item, onSaved, onCancel }) {
 
 // ---------------------------------------------------------------------------
 
-function Modal({ title, onClose, children }) {
+function Modal({ title, onClose, children, wide = false }) {
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose();
@@ -469,9 +475,9 @@ function Modal({ title, onClose, children }) {
         aria-modal="true"
         aria-label={title}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-md bg-cream border-2 border-ink/15 rounded-md shadow-card"
+        className={`relative w-full ${wide ? 'max-w-2xl' : 'max-w-md'} max-h-[90vh] flex flex-col bg-cream border-2 border-ink/15 rounded-md shadow-card`}
       >
-        <div className="flex items-baseline justify-between gap-4 px-6 pt-5 pb-4 border-b-2 border-ink/15">
+        <div className="shrink-0 flex items-center justify-between gap-4 px-6 pt-5 pb-4 border-b-2 border-ink/15">
           <h2 className="font-display text-2xl uppercase text-forest-700 leading-none">
             {title}
           </h2>
@@ -484,7 +490,7 @@ function Modal({ title, onClose, children }) {
             <FiX />
           </button>
         </div>
-        <div className="px-6 py-5">{children}</div>
+        <div className="px-6 py-5 overflow-y-auto">{children}</div>
       </div>
     </div>
   );
@@ -624,20 +630,32 @@ function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function formatDateRange(r) {
+  return `${formatShortDate(r.start_date)} – ${r.end_date ? formatShortDate(r.end_date) : 'return TBD'}`;
+}
+
+const CONTACT_LINK = 'text-ink-soft underline decoration-ink/20 underline-offset-2 hover:text-rust-700 hover:decoration-rust-500';
+
 function RentalRow({ r, actions }) {
   return (
     <li className="py-4 flex flex-wrap items-center justify-between gap-4">
-      <div>
+      <div className="min-w-0">
         <p className="font-display text-base text-ink uppercase tracking-wide">
           {r.inventory?.name || 'Unknown vehicle'}
         </p>
-        <p className="font-editorial italic text-ink-soft text-sm">
-          {formatShortDate(r.start_date)} — {r.end_date ? formatShortDate(r.end_date) : 'TBD'}
-        </p>
-        <p className="font-body text-sm text-ink-soft">
-          {r.renter_name}
-          {r.renter_phone ? ` · ${r.renter_phone}` : ''}
-          {r.renter_email ? ` · ${r.renter_email}` : ''}
+        <p className="font-body text-sm text-ink">{formatDateRange(r)}</p>
+        <p className="mt-0.5 flex flex-wrap gap-x-3 gap-y-0.5 font-body text-sm text-ink-soft">
+          {r.renter_name && <span>{r.renter_name}</span>}
+          {r.renter_phone && (
+            <a href={`tel:${r.renter_phone}`} className={CONTACT_LINK}>
+              {r.renter_phone}
+            </a>
+          )}
+          {r.renter_email && (
+            <a href={`mailto:${r.renter_email}`} className={`${CONTACT_LINK} break-all`}>
+              {r.renter_email}
+            </a>
+          )}
         </p>
         <div className="mt-1">
           <AgreementLink path={r.agreement_path} />
@@ -645,6 +663,20 @@ function RentalRow({ r, actions }) {
       </div>
       {actions && <div className="flex items-center gap-2">{actions}</div>}
     </li>
+  );
+}
+
+function RentalSection({ title, count, tone, children }) {
+  return (
+    <section>
+      <h3 className={`flex items-center gap-2 font-display text-[0.7rem] uppercase tracking-[0.25em] border-b-2 pb-1.5 ${tone}`}>
+        {title}
+        <span className="inline-grid place-items-center min-w-5 h-5 px-1.5 rounded-full bg-ink/10 text-ink text-[0.6rem] font-body font-semibold tracking-normal">
+          {count}
+        </span>
+      </h3>
+      <ul className="divide-y-2 divide-ink/10">{children}</ul>
+    </section>
   );
 }
 
@@ -684,7 +716,13 @@ function OutstandingRentalsPanel({ refreshKey, onChanged }) {
     onChanged?.();
   };
 
-  if (loading) return null;
+  if (loading) {
+    return (
+      <div className="bg-cream border-2 border-ink/15 rounded-md p-5 sm:p-6 mb-8">
+        <p className="font-editorial italic text-ink-soft">Loading rentals…</p>
+      </div>
+    );
+  }
 
   const today = todayStr();
   const requests = rentals.filter((r) => r.status === 'pending');
@@ -697,22 +735,17 @@ function OutstandingRentalsPanel({ refreshKey, onChanged }) {
 
   return (
     <div className="bg-cream border-2 border-ink/15 rounded-md p-5 sm:p-6 mb-8 space-y-8">
-      <h2 className="font-display text-xl uppercase text-forest-700">
-        Outstanding rentals — {rentals.length}
-      </h2>
+      <h2 className="font-display text-xl uppercase text-forest-700">Rentals</h2>
 
       {rentals.length === 0 && (
         <p className="font-editorial italic text-ink-soft">
-          Nothing outstanding right now — no active rentals or pending requests.
+          No pending requests, active rentals or upcoming bookings.
         </p>
       )}
 
       {requests.length > 0 && (
-        <section>
-          <h3 className="font-display text-[0.7rem] uppercase tracking-[0.25em] text-rust-700 border-b-2 border-rust-500/30 pb-1.5">
-            Requests — {requests.length}
-          </h3>
-          <ul className="divide-y-2 divide-ink/10">
+        <div className="-mx-2 sm:-mx-3 px-2 sm:px-3 pt-3 bg-ochre-500/10 border-l-4 border-ochre-500 rounded-[2px]">
+          <RentalSection title="Needs your answer" count={requests.length} tone="text-rust-700 border-rust-500/30">
             {requests.map((r) => (
               <RentalRow
                 key={r.id}
@@ -725,7 +758,7 @@ function OutstandingRentalsPanel({ refreshKey, onChanged }) {
                       onClick={() => approve(r.id)}
                       className={`${BTN_PRIMARY} py-2 px-4 text-xs`}
                     >
-                      <FiCheck /> Approve
+                      <FiCheck /> {busyId === r.id ? 'Approving…' : 'Approve'}
                     </button>
                     <button
                       type="button"
@@ -739,34 +772,24 @@ function OutstandingRentalsPanel({ refreshKey, onChanged }) {
                 }
               />
             ))}
-          </ul>
-        </section>
+          </RentalSection>
+        </div>
       )}
 
       {active.length > 0 && (
-        <section>
-          <h3 className="font-display text-[0.7rem] uppercase tracking-[0.25em] text-forest-700 border-b-2 border-forest-700/30 pb-1.5">
-            Currently rented out — {active.length}
-          </h3>
-          <ul className="divide-y-2 divide-ink/10">
-            {active.map((r) => (
-              <RentalRow key={r.id} r={r} />
-            ))}
-          </ul>
-        </section>
+        <RentalSection title="Out now" count={active.length} tone="text-forest-700 border-forest-700/30">
+          {active.map((r) => (
+            <RentalRow key={r.id} r={r} />
+          ))}
+        </RentalSection>
       )}
 
       {upcoming.length > 0 && (
-        <section>
-          <h3 className="font-display text-[0.7rem] uppercase tracking-[0.25em] text-ink-soft border-b-2 border-ink/15 pb-1.5">
-            Upcoming — {upcoming.length}
-          </h3>
-          <ul className="divide-y-2 divide-ink/10">
-            {upcoming.map((r) => (
-              <RentalRow key={r.id} r={r} />
-            ))}
-          </ul>
-        </section>
+        <RentalSection title="Upcoming" count={upcoming.length} tone="text-ink-soft border-ink/15">
+          {upcoming.map((r) => (
+            <RentalRow key={r.id} r={r} />
+          ))}
+        </RentalSection>
       )}
 
       {declining && (
@@ -878,9 +901,17 @@ function BookingsModal({ item, onClose }) {
     }
   };
 
+  const [confirmingId, setConfirmingId] = useState(null);
+
   const removeBooking = async (id) => {
-    await deleteRental(id);
-    load();
+    setError(null);
+    try {
+      await deleteRental(id);
+      setConfirmingId(null);
+      load();
+    } catch (err) {
+      setError(err.message || 'Could not delete booking.');
+    }
   };
 
   const setReturnDate = async (id, end_date) => {
@@ -889,35 +920,48 @@ function BookingsModal({ item, onClose }) {
   };
 
   return (
-    <Modal title={`Bookings · ${item.name}`} onClose={onClose}>
-      <form onSubmit={addBooking} className="grid sm:grid-cols-2 gap-3 mb-2">
-        <input
-          type="date"
-          required
-          value={form.start_date}
-          onChange={(e) => setForm((f) => ({ ...f, start_date: e.target.value }))}
-          className={INPUT_CLASS}
-        />
-        <input
-          type="date"
-          required={!form.returnUnknown}
-          disabled={form.returnUnknown}
-          value={form.end_date}
-          onChange={(e) => setForm((f) => ({ ...f, end_date: e.target.value }))}
-          className={`${INPUT_CLASS} disabled:opacity-50`}
-        />
-        <input
-          placeholder="Renter name"
-          value={form.renter_name}
-          onChange={(e) => setForm((f) => ({ ...f, renter_name: e.target.value }))}
-          className={INPUT_CLASS}
-        />
-        <input
-          placeholder="Phone"
-          value={form.renter_phone}
-          onChange={(e) => setForm((f) => ({ ...f, renter_phone: e.target.value }))}
-          className={INPUT_CLASS}
-        />
+    <Modal title={`Bookings · ${item.name}`} onClose={onClose} wide>
+      <h3 className={LABEL_CLASS}>Add a confirmed booking</h3>
+      <form onSubmit={addBooking} className="grid sm:grid-cols-2 gap-3 mb-6 bg-paper/60 border-2 border-ink/10 rounded-md p-4">
+        <label className="block">
+          <span className="block font-body text-sm text-ink-soft mb-1">Pick-up date</span>
+          <input
+            type="date"
+            required
+            value={form.start_date}
+            onChange={(e) => setForm((f) => ({ ...f, start_date: e.target.value }))}
+            className={INPUT_CLASS}
+          />
+        </label>
+        <label className="block">
+          <span className="block font-body text-sm text-ink-soft mb-1">Return date</span>
+          <input
+            type="date"
+            required={!form.returnUnknown}
+            disabled={form.returnUnknown}
+            min={form.start_date || undefined}
+            value={form.end_date}
+            onChange={(e) => setForm((f) => ({ ...f, end_date: e.target.value }))}
+            className={`${INPUT_CLASS} disabled:opacity-50`}
+          />
+        </label>
+        <label className="block">
+          <span className="block font-body text-sm text-ink-soft mb-1">Renter name</span>
+          <input
+            value={form.renter_name}
+            onChange={(e) => setForm((f) => ({ ...f, renter_name: e.target.value }))}
+            className={INPUT_CLASS}
+          />
+        </label>
+        <label className="block">
+          <span className="block font-body text-sm text-ink-soft mb-1">Phone</span>
+          <input
+            type="tel"
+            value={form.renter_phone}
+            onChange={(e) => setForm((f) => ({ ...f, renter_phone: e.target.value }))}
+            className={INPUT_CLASS}
+          />
+        </label>
         <label className="sm:col-span-2 flex items-center gap-2 cursor-pointer">
           <input
             type="checkbox"
@@ -933,9 +977,11 @@ function BookingsModal({ item, onClose }) {
           </span>
         </label>
         <button type="submit" disabled={busy} className={`${BTN_PRIMARY} sm:col-span-2`}>
-          {busy ? 'Adding…' : 'Add confirmed booking'}
+          {busy ? 'Adding…' : 'Add booking'}
         </button>
       </form>
+
+      <h3 className={LABEL_CLASS}>All bookings</h3>
 
       {error && (
         <p className="mb-4 inline-flex items-center gap-2 text-rust-700 font-editorial italic">
@@ -951,16 +997,19 @@ function BookingsModal({ item, onClose }) {
       ) : (
         <ul className="divide-y-2 divide-ink/10">
           {rentals.map((r) => (
-            <li key={r.id} className="py-3 flex items-center justify-between gap-3">
+            <li key={r.id} className="py-3 flex items-start justify-between gap-3">
               <div>
-                <p className="font-body text-sm text-ink">
-                  {formatShortDate(r.start_date)} — {r.end_date ? formatShortDate(r.end_date) : 'TBD'}
+                <p className="flex flex-wrap items-center gap-2 font-body text-ink">
+                  {formatDateRange(r)}
+                  <span
+                    className={`inline-flex items-center font-display text-[0.6rem] uppercase tracking-[0.2em] px-2 py-0.5 border-2 rounded-[2px] ${STATUS_BADGE[r.status]}`}
+                  >
+                    {r.status}
+                  </span>
                 </p>
-                <span
-                  className={`inline-flex mt-1 items-center font-display text-[0.6rem] uppercase tracking-[0.2em] px-2 py-0.5 border-2 rounded-[2px] ${STATUS_BADGE[r.status]}`}
-                >
-                  {r.status}
-                </span>
+                {r.renter_name && (
+                  <p className="mt-0.5 font-body text-sm text-ink-soft">{r.renter_name}</p>
+                )}
                 {r.status === 'declined' && r.decline_reason && (
                   <p className="mt-1 font-editorial italic text-sm text-ink-soft">
                     “{r.decline_reason}”
@@ -975,14 +1024,34 @@ function BookingsModal({ item, onClose }) {
                   </div>
                 )}
               </div>
-              <button
-                type="button"
-                onClick={() => removeBooking(r.id)}
-                aria-label="Delete booking"
-                className="grid place-items-center size-8 rounded-[2px] border-2 border-rust-500/40 text-rust-700 hover:bg-rust-500 hover:text-paper transition-colors"
-              >
-                <FiTrash2 />
-              </button>
+              {confirmingId === r.id ? (
+                <div className="flex items-center gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setConfirmingId(null)}
+                    className={`${BTN_GHOST} py-1.5 px-3 text-xs`}
+                  >
+                    Keep
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => removeBooking(r.id)}
+                    className={`${BTN_DANGER} py-1.5 px-3 text-xs`}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setConfirmingId(r.id)}
+                  aria-label="Delete booking"
+                  title="Delete booking"
+                  className="shrink-0 grid place-items-center size-9 rounded-[2px] border-2 border-rust-500/40 text-rust-700 hover:bg-rust-500 hover:text-paper transition-colors"
+                >
+                  <FiTrash2 />
+                </button>
+              )}
             </li>
           ))}
         </ul>
@@ -1137,47 +1206,39 @@ function AdminPanel() {
             {filtered.map((item) => (
               <li
                 key={item.id}
-                className="grid grid-cols-1 md:grid-cols-[64px_2fr_1fr_120px_110px_120px] items-center gap-4 px-5 py-4 hover:bg-paper/60 transition-colors"
+                className="grid grid-cols-[56px_1fr] md:grid-cols-[64px_2fr_1fr_120px_110px_120px] items-center gap-x-4 gap-y-3 px-5 py-4 hover:bg-paper/60 transition-colors"
               >
                 {/* thumb */}
-                <div className="size-14 rounded-[2px] overflow-hidden bg-paper-shade border-2 border-ink/10 shrink-0">
+                <div className="size-14 row-span-2 md:row-span-1 rounded-[2px] overflow-hidden bg-paper-shade border-2 border-ink/10 shrink-0">
                   <img
-                    src={getImages(item)[0]}
+                    src={sizedImage(getImages(item)[0], 160)}
                     alt=""
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
 
-                {/* name */}
-                <div>
-                  <span className="md:hidden block font-display text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft mb-0.5">
-                    Name
-                  </span>
+                {/* name + (mobile) type and counts */}
+                <div className="min-w-0">
                   <span className="font-display text-lg text-ink leading-tight">
                     {item.name}
                   </span>
+                  <p className="md:hidden mt-1 flex items-center gap-3 font-editorial italic text-sm text-ink-soft">
+                    <TypeBadge type={item.type} />
+                    <span className="inline-flex items-center gap-1">
+                      <FiImage className="text-rust-500" /> {item.images?.length ?? 0}
+                    </span>
+                    <span>{item.features?.length ?? 0} features</span>
+                  </p>
                 </div>
 
                 {/* type badge */}
-                <div>
-                  <span className="md:hidden block font-display text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft mb-1">
-                    Type
-                  </span>
-                  <span
-                    className={`inline-flex items-center font-display text-[0.65rem] uppercase tracking-[0.2em] px-2.5 py-1 border-2 rounded-[2px] ${
-                      TYPE_BADGE[item.type] || 'bg-ink/10 text-ink border-ink/20'
-                    }`}
-                  >
-                    {TYPE_LABEL[item.type]}
-                  </span>
+                <div className="hidden md:block">
+                  <TypeBadge type={item.type} />
                 </div>
 
                 {/* image count */}
-                <div className="md:text-right">
-                  <span className="md:hidden font-display text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft mr-2">
-                    Images
-                  </span>
+                <div className="hidden md:block text-right">
                   <span className="inline-flex items-center gap-1.5 font-editorial italic text-ink-soft">
                     <FiImage className="text-rust-500" />
                     {item.images?.length ?? 0}
@@ -1185,17 +1246,14 @@ function AdminPanel() {
                 </div>
 
                 {/* feature count */}
-                <div className="md:text-right">
-                  <span className="md:hidden font-display text-[0.6rem] uppercase tracking-[0.3em] text-ink-soft mr-2">
-                    Features
-                  </span>
+                <div className="hidden md:block text-right">
                   <span className="font-editorial italic text-ink-soft">
                     {item.features?.length ?? 0}
                   </span>
                 </div>
 
                 {/* actions */}
-                <div className="flex items-center md:justify-end gap-2">
+                <div className="col-start-2 md:col-start-auto flex items-center md:justify-end gap-2">
                   <IconBtn
                     onClick={() => setManagingBookings(item)}
                     label={`Bookings for ${item.name}`}
@@ -1245,6 +1303,18 @@ function AdminPanel() {
         <BookingsModal item={managingBookings} onClose={() => setManagingBookings(null)} />
       )}
     </AdminShell>
+  );
+}
+
+function TypeBadge({ type }) {
+  return (
+    <span
+      className={`inline-flex items-center font-display not-italic text-[0.65rem] uppercase tracking-[0.2em] px-2.5 py-1 border-2 rounded-[2px] ${
+        TYPE_BADGE[type] || 'bg-ink/10 text-ink border-ink/20'
+      }`}
+    >
+      {TYPE_LABEL[type]}
+    </span>
   );
 }
 

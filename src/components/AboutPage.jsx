@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CarIcon, CheckIcon, GridIcon, MailIcon, PhoneIcon } from "./Icons";
 import { fetchCategoryImages } from "../lib/inventory";
-import { PLACEHOLDER_IMAGE } from "./specs";
+import { PLACEHOLDER_IMAGE, sizedImage } from "./specs";
 
 const BENEFIT_ICON_CLASS = "shrink-0 text-3xl sm:text-4xl text-ochre-500/70";
 
@@ -98,9 +98,9 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="w-full max-w-[420px] mx-auto rounded-md overflow-hidden shadow-card aspect-[4/5]">
+            <div className="w-full max-w-[520px] mx-auto rounded-md overflow-hidden shadow-card aspect-[4/3]">
               <img
-                src={introImage}
+                src={sizedImage(introImage, 1200)}
                 alt="Lake Area Rentals vehicle ready for pickup"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -165,8 +165,8 @@ export default function AboutPage() {
             {steps.map(({ title, image }, index) => (
               <article key={title} className="relative">
                 <div className="relative bg-cream text-ink rounded-md overflow-hidden shadow-card">
-                  <div className="aspect-[5/4] overflow-hidden bg-paper-shade">
-                    <img src={image} alt="" loading="lazy" className="w-full h-full object-cover" />
+                  <div className="aspect-[4/3] overflow-hidden bg-paper-shade">
+                    <img src={sizedImage(image, 800)} alt="" loading="lazy" className="w-full h-full object-cover" />
                   </div>
                   <span className="absolute top-3 left-3 grid place-items-center size-9 rounded-full bg-rust-500 text-paper font-display text-sm">
                     {index + 1}

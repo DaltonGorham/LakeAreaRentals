@@ -8,6 +8,7 @@ import {
 } from "./Icons";
 import { fetchCategoryImages } from "../lib/inventory";
 import { PLACEHOLDER_IMAGE } from "./specs";
+import VehiclePhoto from "./VehiclePhoto";
 
 const CAT_ICON_CLASS = "text-rust-500 text-2xl";
 
@@ -105,14 +106,11 @@ export default function LandingPage() {
                 className="group relative text-left transition-transform hover:-translate-y-1"
               >
                 <div className="bg-cream rounded-md overflow-hidden shadow-card">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-paper-shade">
-                    <img
-                      src={categoryImages[type] || PLACEHOLDER_IMAGE}
-                      alt=""
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
+                  <VehiclePhoto
+                    src={categoryImages[type] || PLACEHOLDER_IMAGE}
+                    alt=""
+                    className="aspect-[4/3]"
+                  />
                   <div className="p-4">
                     <p className="font-display text-lg text-ink leading-none flex items-center justify-between">
                       <span>{label}</span>
