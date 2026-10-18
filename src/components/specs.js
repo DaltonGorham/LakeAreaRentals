@@ -102,3 +102,15 @@ export const CONTACT = {
   email: 'info@lakearearentalsllc.com',
   emailHref: 'mailto:info@lakearearentalsllc.com',
 };
+
+// Opening hours (24h clock, Central time). Days use JS numbering: 0 = Sunday.
+export const HOURS = [
+  { label: 'Mon – Fri', days: [1, 2, 3, 4, 5], open: 8, close: 18 },
+  { label: 'Saturday', days: [6], open: 9, close: 18 },
+  { label: 'Sunday', days: [0], open: 10, close: 18 },
+];
+
+export function formatHour(h) {
+  const suffix = h >= 12 ? 'PM' : 'AM';
+  return `${h % 12 || 12} ${suffix}`;
+}

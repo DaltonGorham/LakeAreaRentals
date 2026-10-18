@@ -5,9 +5,10 @@ import {
   RvIcon,
   SxsIcon,
   TrailerIcon,
+  PhoneIcon,
 } from "./Icons";
 import { fetchCategoryImages } from "../lib/inventory";
-import { PLACEHOLDER_IMAGE } from "./specs";
+import { PLACEHOLDER_IMAGE, CONTACT } from "./specs";
 import VehiclePhoto from "./VehiclePhoto";
 
 const CAT_ICON_CLASS = "text-rust-500 text-2xl";
@@ -39,7 +40,7 @@ const CATEGORIES = [
   },
 ];
 
-export default function LandingPage() {
+export default function LandingPage({ setCategory }) {
   const navigate = useNavigate();
   const [categoryImages, setCategoryImages] = useState({});
 
@@ -54,26 +55,48 @@ export default function LandingPage() {
     <main className="bg-paper text-ink overflow-x-hidden">
       {/* =================================================================== HERO */}
       <section className="paper-grain relative">
-        <div className="relative max-w-[1300px] mx-auto px-5 sm:px-10 pt-16 pb-24 lg:pt-24 lg:pb-32">
-          <h1 className="reveal font-display text-[clamp(3.5rem,12vw,10rem)] leading-[0.92] tracking-tight uppercase text-forest-700">
-            Lake Area
-            <span className="block text-ink italic font-editorial">Rentals</span>
-          </h1>
+        <div className="relative max-w-[1300px] mx-auto px-5 sm:px-10 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+          <div className="lg:col-span-7">
+            <h1 className="reveal font-display text-[clamp(3.25rem,12vw,6.75rem)] leading-[0.92] tracking-tight uppercase text-forest-700">
+              Lake Area
+              <span className="block text-ink italic font-editorial">Rentals</span>
+            </h1>
 
-          <p className="reveal mt-7 max-w-xl font-editorial italic text-xl sm:text-2xl leading-snug text-ink-soft">
-            Cars, RVs, side-by-sides, and trailers
-          </p>
+            <p className="reveal mt-7 max-w-xl font-editorial italic text-xl sm:text-2xl leading-snug text-ink-soft">
+              Cars, RVs, side-by-sides, and trailers
+            </p>
 
-          <div className="reveal mt-9 flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => navigate("/inventory")}
-              className="group inline-flex items-center gap-3 bg-ink text-paper font-display uppercase tracking-[0.18em] text-sm px-7 py-4 rounded-[2px] hover:bg-rust-700 transition-colors"
-            >
-              Browse the inventory
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </button>
+            <div className="reveal mt-9 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => navigate("/inventory")}
+                className="group inline-flex items-center gap-3 bg-ink text-paper font-display uppercase tracking-[0.18em] text-sm px-7 py-4 rounded-[2px] hover:bg-rust-700 transition-colors"
+              >
+                Browse the inventory
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </button>
+              <a
+                href={CONTACT.phoneHref}
+                className="inline-flex items-center gap-2.5 border-2 border-ink text-ink font-display uppercase tracking-[0.18em] text-sm px-6 py-[0.875rem] rounded-[2px] hover:bg-ink hover:text-paper transition-colors"
+              >
+                <PhoneIcon className="text-base" />
+                {CONTACT.phone}
+              </a>
+            </div>
+          </div>
+
+          {/* postcard */}
+          <div className="lg:col-span-5 relative max-w-[560px] w-full mx-auto lg:mx-0 px-2 sm:px-0">
+            <figure className="postcard-in relative rotate-[-2deg] bg-cream p-3 sm:p-4 rounded-[3px] shadow-card">
+              <img
+                src="/images/lake-sunset.jpg"
+                alt="Illustration of an RV, a car and a side-by-side parked by the lake at sunset"
+                width="1200"
+                height="800"
+                className="block w-full aspect-[3/2] object-cover rounded-[2px]"
+              />
+            </figure>
           </div>
         </div>
       </section>
@@ -102,7 +125,10 @@ export default function LandingPage() {
             {CATEGORIES.map(({ label, type, tag, icon }) => (
               <button
                 key={label}
-                onClick={() => navigate("/inventory")}
+                onClick={() => {
+                  setCategory?.(type);
+                  navigate("/inventory");
+                }}
                 className="group relative text-left transition-transform hover:-translate-y-1"
               >
                 <div className="bg-cream rounded-md overflow-hidden shadow-card">

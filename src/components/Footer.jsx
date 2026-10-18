@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { HOURS, formatHour } from "./specs";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -47,17 +48,15 @@ export default function Footer() {
             Open Hours
           </h4>
           <div className="relative w-full max-w-xs mx-auto md:max-w-none rounded-[3px] bg-forest-700/60 ring-1 ring-paper/15 p-5 font-editorial">
-            {[
-              ["Mon – Fri", "8 AM – 6 PM"],
-              ["Saturday", "9 AM – 6 PM"],
-              ["Sunday", "10 AM – 6 PM"],
-            ].map(([day, hours]) => (
+            {HOURS.map(({ label, open, close }) => (
               <div
-                key={day}
+                key={label}
                 className="flex items-center justify-between py-2 border-b border-paper/15 last:border-0"
               >
-                <span className="text-paper/80">{day}</span>
-                <span className="text-ochre-300 font-medium">{hours}</span>
+                <span className="text-paper/80">{label}</span>
+                <span className="text-ochre-300 font-medium">
+                  {formatHour(open)} – {formatHour(close)}
+                </span>
               </div>
             ))}
           </div>

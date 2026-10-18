@@ -20,7 +20,7 @@ function App() {
     <>
       {!isAdmin && <Header />}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage setCategory={setCategory} />} />
         <Route path="/inventory" element={<InventoryPage category={category} setCategory={setCategory} />} />
         <Route path="/inventory/:type/:id" element={<VehicleDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
